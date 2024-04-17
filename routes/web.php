@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SliderController;
@@ -86,6 +88,16 @@ Route::group(['prefix' => 'slider', 'as' => 'slider.'], function() {
     Route::delete('/delete/{id}', [SliderController::class, 'delete'])->name('delete');
 });
 
+Route::group(['prefix' => 'article', 'as' => 'article.'], function() {
+    Route::get('/manage', [ArticleController::class, 'manage'])->name('manage');
+    Route::get('/data', [ArticleController::class, 'getData'])->name('data');
+    Route::get('/create', [ArticleController::class, 'create'])->name('create');
+    Route::post('/store', [ArticleController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [ArticleController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [ArticleController::class, 'delete'])->name('delete');
+});
+
 
 // Pending Fifur
 Route::group(['prefix' => 'team', 'as' => 'team.'], function() {
@@ -97,3 +109,8 @@ Route::group(['prefix' => 'team', 'as' => 'team.'], function() {
     Route::put('/update/{id}', [TeamController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [TeamController::class, 'delete'])->name('delete');
 });
+
+
+// Frontend
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');

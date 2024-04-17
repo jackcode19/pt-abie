@@ -17,17 +17,17 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $about = About::find($id);
-        $pathImage = public_path() . '/images/about/' . $about->logo;
+        $pathImage = public_path() . '/images/about/' . $about->image;
 
-        if ($request->hasFile('logo')) {
+        if ($request->hasFile('image')) {
             File::delete($pathImage);
-            $imageFile = $request->logo;
-            $logo = uniqid() . '_' . $imageFile->getClientOriginalExtension();
-            $imageFile->move(public_path() . '/images/about/', $logo);
-        } elseif ($about->logo) {
-            $logo = $about->logo;
+            $imageFile = $request->image;
+            $image = $about['title'] . '.' . $imageFile->extension();
+            $imageFile->move(public_path() . '/images/about/', $image);
+        } elseif ($about->image) {
+            $image = $about->image;
         } else {
-            $logo = null;
+            $image = null;
         }
 
         $inputUpdate = $request->all();
@@ -35,8 +35,8 @@ class AboutController extends Controller
         try {
             $updateAbout = $about;
             // Jika ada image baru
-            if ($updateAbout->logo) {
-                $inputUpdate['logo'] = $logo;
+            if ($updateAbout->image) {
+                $inputUpdate['image'] = $image;
             }
 
             $updateAbout->update($inputUpdate);

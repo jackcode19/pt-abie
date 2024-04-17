@@ -20,7 +20,7 @@ class ServiceController extends Controller
                 ],
                 [
                     'label' => 'logo',
-                    'name' => 'service_image'
+                    'name' => 'service_logo'
                 ],
                 [
                     'label' => 'Deskripsi',
@@ -41,7 +41,7 @@ class ServiceController extends Controller
             $service = Service::select([
                 'id',
                 'title',
-                'service_image',
+                'service_logo',
                 'description',
                 'created_at'
             ])
@@ -52,8 +52,8 @@ class ServiceController extends Controller
                     return date('d-m-Y', strtotime($service->created_at));
                 })
 
-            ->addColumn('service_image', function ($service) {
-                    $url = asset('/images/services/' . $service->service_image);
+            ->addColumn('service_logo', function ($service) {
+                    $url = asset('/images/services/' . $service->service_logo);
                     return '<img src="' . $url . '" alt="" style="width: 170px;" height="120px" class="img-rounded" />';
                 })
 
@@ -66,7 +66,7 @@ class ServiceController extends Controller
 
                     return $string;
                 })
-                ->rawColumns(['action', 'service_image'])
+                ->rawColumns(['action', 'service_logo'])
                 ->make(true);
         } catch (\Exception $error) {
             return $error->getMessage();
@@ -83,13 +83,13 @@ class ServiceController extends Controller
         $input = $request->all();
 
         try {
-            if ($request->hasFile('service_image')) {
-                $imageFile = $request->service_image;
-                $logo = $input['title'] . '.' . $imageFile->extension();
-                $imageFile->move(public_path() . '/images/services/', $logo);
+            if ($request->hasFile('service_logo')) {
+                $imageFile = $request->service_logo;
+                $serviceLogo = $input['title'] . '.' . $imageFile->extension();
+                $imageFile->move(public_path() . '/images/services/', $serviceLogo);
             }
 
-            $input['service_image'] = $logo;
+            $input['service_logo'] = $serviceLogo;
             $createService = Service::create($input);
 
             if ($createService) {
@@ -115,17 +115,17 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $service = Service::findOrFail($id);
-        $pathLogo = public_path() . '/images/services/' . $service->service_image;
+        $pathLogo = public_path() . '/images/services/' . $service->service_logo;
 
-        if ($request->hasFile('service_image')) {
+        if ($request->hasFile('service_logo')) {
             File::delete($pathLogo);
-            $imageFile = $request->service_image;
-            $logo = $service['title'] . '.' . $imageFile->extension();
-            $imageFile->move(public_path(). '/images/services/', $logo);
-        } elseif($service->service_image) {
-            $logo = $service->service_image;
+            $imageFile = $request->service_logo;
+            $serviceLogo = $service['title'] . '.' . $imageFile->extension();
+            $imageFile->move(public_path(). '/images/services/', $serviceLogo);
+        } elseif($service->service_logo) {
+            $serviceLogo = $service->service_logo;
         } else {
-            $logo = null;
+            $serviceLogo = null;
         }
 
         $inputUpdate = $request->all();
@@ -135,8 +135,8 @@ class ServiceController extends Controller
         try {
             $serviceUpdate = $service;
 
-            if ($serviceUpdate->service_image) {
-                $inputUpdate['service_image'] = $logo;
+            if ($serviceUpdate->service_logo) {
+                $inputUpdate['service_logo'] = $serviceLogo;
             }
 
             $serviceUpdate->update($inputUpdate);
@@ -155,7 +155,7 @@ class ServiceController extends Controller
         $service = Service::findOrfail($id);
 
         try {
-            $pathLogo = public_path(). '/images/services/' . $service->service_image;
+            $pathLogo = public_path(). '/images/services/' . $service->service_logo;
             File::delete($pathLogo);
 
             $serviceDelete = $service->delete();

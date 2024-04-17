@@ -26,7 +26,7 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="/admin/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs5.min.css">
     @stack('style')
 </head>
 
@@ -92,12 +92,13 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Summernote -->
-    <script src="/admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="/admin/plugins/summernote/summernote-bs5.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/admin/dist/js/adminlte.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
     <script src="/admin/dist/js/pages/dashboard.js"></script>
     @include('components.alert')
     @include('components.custom')
@@ -130,18 +131,11 @@
             });
         }
 
-        function countOrder()
-        {
-            $.ajax({
-                url: "/order/count-order",
-                type: "GET",
-                dataType: "json",
-                success: function(data) {
-                    // console.log(data);
-                    $('.count-order').text(data.total);
-                }
-            })
-        }
+        $(function () {
+        // Summernote
+        $("#summernote").summernote();
+
+      });
 
         function getUrl()
         {

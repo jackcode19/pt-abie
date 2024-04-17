@@ -53,16 +53,30 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Sub Judul</label>
-                                    <input type="text" class="form-control" name="subtitle" id="subtitle"
-                                        placeholder="Nama Perusahaan" value="{{ isset($about) ? $about->subtitle : old('subtitle') }}">
+                                    <label for="image">Gambar Produk</label>
+                                    @if (isset($about))
+                                        <div class="mb-3">
+                                            <img src="{{ asset('/images/about/' . $about->image) }}" alt=""
+                                                style="width: 170px;" height="120px" class="img-rounded">
+                                        </div>
+                                    @endif
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="image" id="image">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose
+                                                file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                    </div>
 
-                                    @error('subtitle')
+                                    @error('image')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Deskripsi 2</label>
+                                    <label for="name">Deskripsi 1</label>
                                     <textarea class="form-control" rows="4" name="description_1" id="description_1" placeholder="Deskripsi ...">{{ isset($about) ? $about->description_1 : old('description_1') }}</textarea>
                                     @error('description_1')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
@@ -70,26 +84,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Deskripsi 2</label>
-                                    <textarea class="form-control" rows="3" name="description_2" id="description_2" placeholder="Sub Deskripsi ...">{{ isset($about) ? $about->description_2 : old('description_2') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="description_2" id="summernote" placeholder="Sub Deskripsi ...">{{ isset($about) ? $about->description_2 : old('description_2') }}</textarea>
                                     @error('description_2')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="name">Visi</label>
-                                    <textarea class="form-control" rows="3" name="visi" id="visi" placeholder="Sub Deskripsi ...">{{ isset($about) ? $about->visi : old('visi') }}</textarea>
-                                    @error('visi')
-                                        <div class="mt-2 text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Misi</label>
-                                    <textarea class="form-control" rows="3" name="misi" id="visi" placeholder="Sub Deskripsi ...">{{ isset($about) ? $about->misi : old('misi') }}</textarea>
-                                    @error('misi')
-                                        <div class="mt-2 text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
                             </div>
+
+                            
+
                             <div class="card-footer">
                                 <button type="submit" submitAbout="submit" class="btn btn-info btn-sm">Submit</button>
                             </div>
@@ -99,6 +102,7 @@
             </div>
         </div>
     </section>
+    
 @endsection
 
 @if (isset($item))

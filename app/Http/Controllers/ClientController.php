@@ -20,7 +20,7 @@ class ClientController extends Controller
                 ],
                 [
                     'label' => 'Image',
-                    'name' => 'client_image'
+                    'name' => 'client_logo'
                 ],
                 [
                     'label' => 'Deskripsi',
@@ -41,7 +41,7 @@ class ClientController extends Controller
             $client = Client::select([
                 'id',
                 'title',
-                'client_image',
+                'client_logo',
                 'description',
                 'created_at',
             ])
@@ -52,8 +52,8 @@ class ClientController extends Controller
                     return date('d-m-Y', strtotime($client->created_at));
                 })
 
-            ->addColumn('client_image', function ($client) {
-                    $url = asset('/images/clients/' . $client->client_image);
+            ->addColumn('client_logo', function ($client) {
+                    $url = asset('/images/clients/' . $client->client_logo);
                     return '<img src="' . $url . '" alt="" style="width: 170px;" height="120px" class="img-rounded" />';
                 })
 
@@ -66,7 +66,7 @@ class ClientController extends Controller
 
                 return $string;
             })
-            ->rawColumns(['action', 'client_image'])
+            ->rawColumns(['action', 'client_logo'])
             ->make(true);
 
         } catch (\Exception $error) {
@@ -84,13 +84,13 @@ class ClientController extends Controller
         $input = $request->all();
 
         try {
-            if ($request->hasFile('client_image')) {
-                $imageFile = $request->client_image;
-                $clientImage = $input['title'] . '.' . $imageFile->extension();
-                $imageFile->move(public_path(). '/images/clients/', $clientImage);
+            if ($request->hasFile('client_logo')) {
+                $imageFile = $request->client_logo;
+                $clientLogo = $input['title'] . '.' . $imageFile->extension();
+                $imageFile->move(public_path(). '/images/clients/', $clientLogo);
             }
 
-            $input['client_image'] = $clientImage;
+            $input['client_logo'] = $clientLogo;
             $createClient = Client::create($input);
 
             if ($createClient) {
@@ -116,17 +116,17 @@ class ClientController extends Controller
     public function update(Request  $request, $id)
     {
         $client = Client::findOrFail($id);
-        $pathLogo = public_path() . '/images/clients/' . $client->client_image;
+        $pathLogo = public_path() . '/images/clients/' . $client->client_logo;
 
-        if ($request->hasFile('client_image')) {
+        if ($request->hasFile('client_logo')) {
             File::delete($pathLogo);
-            $imageFile = $request->client_image;
-            $clientImage = $client['title'] . '.' . $imageFile->extension();
-            $imageFile->move(public_path(). '/images/clients/', $clientImage);
-        } elseif($client->client_image) {
-            $clientImage = $client->client_image;
+            $imageFile = $request->client_logo;
+            $clientLogo = $client['title'] . '.' . $imageFile->extension();
+            $imageFile->move(public_path(). '/images/clients/', $clientLogo);
+        } elseif($client->client_logo) {
+            $clientLogo = $client->client_logo;
         } else {
-            $clientImage = null;
+            $clientLogo = null;
         }
 
         $inputUpdate = $request->all();
@@ -134,8 +134,8 @@ class ClientController extends Controller
         try {
             $clientUpdate = $client;
 
-            if ($clientUpdate->client_image) {
-                $inputUpdate['client_image'] = $clientImage;
+            if ($clientUpdate->client_logo) {
+                $inputUpdate['client_image'] = $clientLogo;
             }
 
             $clientUpdate = $client->update($inputUpdate);
@@ -154,7 +154,7 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
 
         try {
-            $pathLogo = public_path() . '/images/clients/' . $client->client_image;
+            $pathLogo = public_path() . '/images/clients/' . $client->client_logo;
             File::delete($pathLogo);
 
             $clientDelete = $client->delete();

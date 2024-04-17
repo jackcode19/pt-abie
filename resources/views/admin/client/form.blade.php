@@ -56,13 +56,13 @@
                                     <label for="image">Logo</label>
                                     @if (isset($client))
                                         <div class="mb-3">
-                                            <img src="{{ asset('/images/clients/' . $client->client_image) }}" alt=""
+                                            <img src="{{ asset('/images/clients/' . $client->client_logo) }}" alt=""
                                                 style="width: 170px;" height="120px" class="img-rounded">
                                         </div>
                                     @endif
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="client_image" id="client_image">
+                                            <input type="file" class="custom-file-input" name="client_logo" id="client_logo">
                                             <label class="custom-file-label" for="exampleInputFile">Choose
                                                 file</label>
                                         </div>
@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
 
-                                    @error('client_image')
+                                    @error('client_logo')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

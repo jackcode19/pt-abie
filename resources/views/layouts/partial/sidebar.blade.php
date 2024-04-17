@@ -44,6 +44,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('slider.manage') }}" class="nav-link {{ request()->is('team/*') ? 'active' : '' }}">
+                        <i class="nav-icon far fa-image"></i>
+                        <p>
+                            Slider
+                            <span class="badge badge-info right"></span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('service.manage') }}" class="nav-link {{ request()->is('service/*') ? 'active' : '' }}">
                         <i class="nav-icon far fa-calendar-alt"></i>
                         <p>
@@ -61,10 +70,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('slider.manage') }}" class="nav-link {{ request()->is('team/*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-users"></i>
+                    <a href="{{ route('article.manage') }}" class="nav-link {{ request()->is('article/*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Slider
+                            Artikel
                             <span class="badge badge-info right"></span>
                         </p>
                     </a>
@@ -79,7 +88,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link {{ request()->is('product/*') ? 'active' : '' }}">
+                    <a href="" class="nav-link">
                     <i class="nav-icon fas fa-book"></i>
                         <p>
                             Master Product
@@ -88,13 +97,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('product.manage') }}" class="nav-link">
+                            <a href="{{ route('product.manage') }}" class="nav-link  {{ request()->is('product/*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('category.manage') }}" class="nav-link">
+                            <a href="{{ route('category.manage') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }} ">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Category Product</p>
                             </a>
