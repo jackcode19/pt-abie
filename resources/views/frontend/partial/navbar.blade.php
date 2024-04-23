@@ -1,4 +1,77 @@
-<header id="header" class="header d-flex align-items-center">
+<header id="header" class="{{ request()->is('home') ? 'header-two' : 'header-one' }} ">
+    <div class="site-navigation">
+      <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                  
+                  <div class="logo">
+                      <a class="d-block" href="index-2.html">
+                        <img loading="" src="/frontend/images/logo.png" alt="Constra">
+                      </a>
+                  </div><!-- logo end -->
+
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  
+                  <div id="navbar-collapse" class="collapse navbar-collapse">
+                      <ul class="nav navbar-nav ml-auto align-items-center">
+
+                        {{-- <li class="nav-item"><a class="nav-link">Home</a></li> --}}
+                        <li class="nav-item {{ request()->is('home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tentang <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="{{ route('about') }}">Profile</a></li>
+                              <li><a href="team.html">Klien</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Layanan <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="{{ route('service') }}">Semua Layanan</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produk <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="{{ route('product') }}">Semua Produk</a></li>
+                            </ul>
+                        </li>
+                
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Artikel <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="{{ route('article') }}">Semua Artikel</a></li>
+                            </ul>
+                        </li>
+                
+                        <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Kontak</a></li>
+
+                        <li class="header-get-a-quote">
+                            {{-- <a class="btn btn-primary" href="contact.html">Kontak Kami</a> --}}
+                        </li>
+                      </ul>
+                  </div>
+                </nav>
+            </div>
+            <!--/ Col end -->
+          </div>
+          <!--/ Row end -->
+      </div>
+      <!--/ Container end -->
+
+    </div>
+    <!--/ Navigation end -->
+</header>
+
+
+{{-- <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
@@ -11,13 +84,13 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="projects.html">Produk</a></li>
-          <li><a href="blog.html">Client</a></li>
+          <li><a href="{{ route('home') }}" class="{{ request()->is('home') ? 'active' : '' }}">Home</a></li>
+          <li><a href="{{ route('about') }}" class="{{ request()->is('about') ? 'active' : '' }}">About</a></li>
+          <li><a href="{{ route('service') }}" class="{{ request()->is('service') ? 'active' : '' }}">Services</a></li>
+          <li><a href="{{ route('product') }}" class="{{ request()->is('product') ? 'active' : '' }}">Produk</a></li>
+          <li><a href="">Client</a></li>
           <li><a href="blog.html">Article</a></li>
-          {{-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -33,10 +106,10 @@
               <li><a href="#">Dropdown 3</a></li>
               <li><a href="#">Dropdown 4</a></li>
             </ul>
-          </li> --}}
+          </li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav><!-- .navbar -->
 
     </div>
-  </header>
+</header> --}}

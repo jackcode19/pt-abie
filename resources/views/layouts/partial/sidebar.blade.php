@@ -44,6 +44,52 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="" class="nav-link">
+                    <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Master Product
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('product.manage') }}" class="nav-link  {{ request()->is('product/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('category.manage') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }} ">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Category Product</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Master Article
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('article.manage') }}" class="nav-link  {{ request()->is('article/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Article</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('category-article.manage') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }} ">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Category Article</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('slider.manage') }}" class="nav-link {{ request()->is('team/*') ? 'active' : '' }}">
                         <i class="nav-icon far fa-image"></i>
                         <p>
@@ -73,7 +119,7 @@
                     <a href="{{ route('article.manage') }}" class="nav-link {{ request()->is('article/*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Artikel
+                            Gallery
                             <span class="badge badge-info right"></span>
                         </p>
                     </a>
@@ -87,29 +133,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                    <i class="nav-icon fas fa-book"></i>
-                        <p>
-                            Master Product
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('product.manage') }}" class="nav-link  {{ request()->is('product/*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Product</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('category.manage') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }} ">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Category Product</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

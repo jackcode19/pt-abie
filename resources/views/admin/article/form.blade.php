@@ -75,6 +75,18 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label>Kategori</label>
+                                    <select class="form-control" name="category_id" id="category_id" style="width: 100%;">
+                                        <option value="">Pilih kategori</option>
+                                    @foreach($categoryList as $category)
+                                    <option {{ isset($article) && $article->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                    </select>
+                                    @error('category')
+                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="name">Konten</label>
                                     <textarea class="form-control" rows="3" name="content" id="summernote" placeholder="Konten ...">{{ isset($article) ? $article->content : old('content') }}</textarea>
                                     @error('content')

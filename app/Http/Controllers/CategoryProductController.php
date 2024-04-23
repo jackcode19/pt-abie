@@ -18,8 +18,8 @@ class CategoryProductController extends Controller
                     'name' => 'name'
                 ],
                 [
-                    'label' => 'Description',
-                    'name' => 'description'
+                    'label' => 'Tanggal Dibuat',
+                    'name' => 'created_at'
                 ],
                 [
                     'label' => 'Action',
@@ -36,7 +36,6 @@ class CategoryProductController extends Controller
             $category = CategoryProduct::select([
                 'id',
                 'name',
-                'description',
                 'created_at'
             ])
             ->orderBy('created_at', 'asc');
@@ -56,7 +55,7 @@ class CategoryProductController extends Controller
 
                 return $string;
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'created_at'])
             ->make(true);
 
         } catch (\Exception $error) {

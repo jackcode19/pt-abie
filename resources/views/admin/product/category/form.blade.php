@@ -51,13 +51,6 @@
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="name">Deskripsi</label>
-                                    <textarea class="form-control" rows="3" name="description" id="description" placeholder="Deskripsi ...">{{ isset($category) ? $category->description : old('description') }}</textarea>
-                                    @error('description')
-                                        <div class="mt-2 text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
                             </div>
                             <div class="card-footer">
                                 <button type="submit" submitCategory="submit" class="btn btn-info btn-sm">Submit</button>

@@ -15,10 +15,9 @@ class CategoryProduct extends Model
 
     protected $keyType = 'string';
 
-    PROTECTED $fillable = [
+    protected $fillable = [
         'id',
         'name',
-        'description',
     ];
 
     public function products()

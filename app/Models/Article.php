@@ -17,7 +17,13 @@ class Article extends Model
 
     protected $fillable = [
         'title',
+        'category_id',
         'image',
         'content',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(CategoryArticle::class, 'category_id', 'id');
+    }
 }

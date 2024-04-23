@@ -1,11 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+================================================== -->
+  <meta charset="utf-8">
+  <title>PT - Abie</title>
+
+  <!-- Mobile Specific Metas
+================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name=author content="Themefisher">
+  <meta name=generator content="Themefisher Constra HTML Template v1.0">
+
+  <!-- Favicon
+================================================== -->
+  <link rel="icon" type="/frontend/image/png" href="images/favicon.png">
+
+  <!-- CSS
+================================================== -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/frontend/plugins/bootstrap/bootstrap.min.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="/frontend/plugins/fontawesome/css/all.min.css">
+  <!-- Animation -->
+  <link rel="stylesheet" href="/frontend/plugins/animate-css/animate.css">
+  <!-- slick Carousel -->
+  <link rel="stylesheet" href="/frontend/plugins/slick/slick.css">
+  <link rel="stylesheet" href="/frontend/plugins/slick/slick-theme.css">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="/frontend/plugins/colorbox/colorbox.css">
+  <!-- Template styles-->
+  <link rel="stylesheet" href="/frontend/css/style.css">
+
+</head>
+<body>
+  <div class="body-inner">
+
+    {{-- <div id="top-bar" class="top-bar">
+        <div class="container">
+          <div class="row">
+              <div class="col-lg-8 col-md-8">
+                <ul class="top-info text-center text-md-left">
+                    <li><i class="fas fa-map-marker-alt"></i> <p class="info-text">9051 Constra Incorporate, USA</p>
+                    </li>
+                </ul>
+              </div>
+              <!--/ Top info end -->
+  
+              <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
+                <ul class="list-unstyled">
+                    <li>
+                      <a title="Facebook" href="https://facebbok.com/themefisher.com">
+                          <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+                      </a>
+                      <a title="Twitter" href="https://twitter.com/themefisher.com">
+                          <span class="social-icon"><i class="fab fa-twitter"></i></span>
+                      </a>
+                      <a title="Instagram" href="https://instagram.com/themefisher.com">
+                          <span class="social-icon"><i class="fab fa-instagram"></i></span>
+                      </a>
+                      <a title="Linkdin" href="https://github.com/themefisher.com">
+                          <span class="social-icon"><i class="fab fa-github"></i></span>
+                      </a>
+                    </li>
+                </ul>
+              </div>
+              <!--/ Top social end -->
+          </div>
+          <!--/ Content row end -->
+        </div>
+        <!--/ Container end -->
+    </div>
+    <!--/ Topbar end --> --}}
+
+  <!-- Header start -->
+  @include('frontend.partial.navbar')
+  <!--/ Header end -->
+
+  @yield('main')
+
+
+  @include('frontend.partial.footer')
+  <!-- Footer end -->
+
+
+  <!-- Javascript Files
+  ================================================== -->
+
+  <!-- initialize jQuery Library -->
+  <script src="/frontend/plugins/jQuery/jquery.min.js"></script>
+  <!-- Bootstrap jQuery -->
+  <script src="/frontend/plugins/bootstrap/bootstrap.min.js" defer></script>
+  <!-- Slick Carousel -->
+  <script src="/frontend/plugins/slick/slick.min.js"></script>
+  <script src="/frontend/plugins/slick/slick-animation.min.js"></script>
+  <!-- Color box -->
+  <script src="/frontend/plugins/colorbox/jquery.colorbox.js"></script>
+  <!-- shuffle -->
+  <script src="/frontend/plugins/shuffle/shuffle.min.js" defer></script>
+
+
+  <!-- Google Map API Key-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+  <!-- Google Map Plugin-->
+  <script src="/frontend/plugins/google-map/map.js" defer></script>
+
+  <!-- Template custom -->
+  <script src="/frontend/js/script.js"></script>
+
+  </div><!-- Body inner end -->
+  </body>
+
+  </html>
+
+{{-- <!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>UpConstruction Bootstrap Template - Index</title>
+  <title>PT - Abie</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -44,7 +162,8 @@
   @include('frontend.partial.navbar')
   <!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
+@if (request()->is('home'))
+    <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
 
     <div class="info d-flex align-items-center">
@@ -52,7 +171,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h2 data-aos="fade-down">Welcome to <span>PT Anak Bungsu Indonesia</span></h2>
-            <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p data-aos="fade-up">senatiasa memberikan pelayanan yang terbaik untuk memajukan pembangunan dengan terus melakukan kerjasama antar sektor untuk mewujudkan infrastruktur yang berguna dan bermanfaat untuk bangsa dan negara Indonesia tercinta.</p>
             <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Get Started</a>
           </div>
         </div>
@@ -78,6 +197,7 @@
     </div>
 
   </section><!-- End Hero Section -->
+@endif
 
   <main id="main">
 
@@ -107,4 +227,4 @@
 
 </body>
 
-</html>
+</html> --}}

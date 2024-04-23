@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
@@ -88,6 +89,17 @@ Route::group(['prefix' => 'slider', 'as' => 'slider.'], function() {
     Route::delete('/delete/{id}', [SliderController::class, 'delete'])->name('delete');
 });
 
+
+Route::group(['prefix' => 'category-article', 'as' => 'category-article.'], function() {
+    Route::get('/manage', [CategoryArticleController::class, 'manage'])->name('manage');
+    Route::get('/data', [CategoryArticleController::class, 'getData'])->name('data');
+    Route::get('create', [CategoryArticleController::class, 'create'])->name('create');
+    Route::post('/store', [CategoryArticleController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [CategoryArticleController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [CategoryArticleController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [CategoryArticleController::class, 'delete'])->name('delete');
+});
+
 Route::group(['prefix' => 'article', 'as' => 'article.'], function() {
     Route::get('/manage', [ArticleController::class, 'manage'])->name('manage');
     Route::get('/data', [ArticleController::class, 'getData'])->name('data');
@@ -113,4 +125,11 @@ Route::group(['prefix' => 'team', 'as' => 'team.'], function() {
 
 // Frontend
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/service', [HomeController::class, 'service'])->name('service');
+Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/product/{id}/detail', [HomeController::class, 'productDetail'])->name('productDetail');
+Route::get('/article', [HomeController::class, 'article'])->name('article');
+Route::get('/article/{id}/detail', [HomeController::class, 'articleDetail'])->name('articleDetail');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

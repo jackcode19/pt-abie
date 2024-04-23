@@ -1,88 +1,89 @@
-<footer id="footer" class="footer">
-
-    <div class="footer-content position-relative">
+<footer id="footer" class="footer bg-overlay">
+    <div class="footer-main">
       <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="footer-info">
-              <h3>UpConstruction</h3>
+        <div class="row justify-content-between">
+          <div class="col-lg-4 col-md-6 footer-widget footer-about">
+            <h3 class="widget-title">Tentang Kami</h3>
+            {{-- <img loading="lazy" width="200px" class="footer-logo" src="/frontend/images/footer-bg.png" alt="Constra"> --}}
               <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
+                Menjadi salah satu Perusahaan Agen Pertamina yang kompeten dalam menjual dan mendisri busikan Bahan Bakar MInyak (BBM) Industri, terdepan akan kualitas dan kuantitas dalam setiap produk dan pelayanannya.
               </p>
-              <div class="social-links d-flex mt-3">
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
-              </div>
+            <div class="footer-social">
+              <ul>
+                <li><a href="" aria-label="Facebook"><i
+                      class="fab fa-facebook-f"></i></a></li>
+                <li><a href="" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li><a href="" aria-label="Instagram"><i
+                      class="fab fa-instagram"></i></a></li>
+              </ul>
+            </div><!-- Footer social end -->
+          </div><!-- Col end -->
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
+            <h3 class="widget-title">Informasi</h3>
+            <p>
+                Samolo Blok 4 No.3 Ciherang<br>
+                Kecamatan Karangtengah <br>
+                Kabupaten Cianjur - Jawa Barat 43281<br><br>
+                <strong>Phone:</strong> 081254267654<br>
+                <strong>Email:</strong> ptabienergi@gmail.com<br>
+              </p>
+          </div><!-- Col end -->
+
+          {{-- <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
+            <h3 class="widget-title">Working Hours</h3>
+            <div class="working-hours">
+              We work 7 days a week, every day excluding major holidays. Contact us if you have an emergency, with our
+              Hotline and Contact form.
+              <br><br> Monday - Friday: <span class="text-right">10:00 - 16:00 </span>
+              <br> Saturday: <span class="text-right">12:00 - 15:00</span>
+              <br> Sunday and holidays: <span class="text-right">09:00 - 12:00</span>
             </div>
-          </div><!-- End footer info column-->
+          </div><!-- Col end --> --}}
 
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
+            <h3 class="widget-title">Layanan</h3>
+            <ul class="list-arrow">
+              <li><a href="service-single.html">Perdagangan BBM</a></li>
+              <li><a href="service-single.html">Perdagangan Material Bangunan</a></li>
+              <li><a href="service-single.html">Perdagangan Logam Material</a></li>
             </ul>
-          </div><!-- End footer links column-->
+          </div><!-- Col end -->
+        </div><!-- Row end -->
+      </div><!-- Container end -->
+    </div><!-- Footer main end -->
 
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">Web Development</a></li>
-              <li><a href="#">Product Management</a></li>
-              <li><a href="#">Marketing</a></li>
-              <li><a href="#">Graphic Design</a></li>
-            </ul>
-          </div><!-- End footer links column-->
-
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Hic solutasetp</h4>
-            <ul>
-              <li><a href="#">Molestiae accusamus iure</a></li>
-              <li><a href="#">Excepturi dignissimos</a></li>
-              <li><a href="#">Suscipit distinctio</a></li>
-              <li><a href="#">Dilecta</a></li>
-              <li><a href="#">Sit quas consectetur</a></li>
-            </ul>
-          </div><!-- End footer links column-->
-
-          <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Nobis illum</h4>
-            <ul>
-              <li><a href="#">Ipsam</a></li>
-              <li><a href="#">Laudantium dolorum</a></li>
-              <li><a href="#">Dinera</a></li>
-              <li><a href="#">Trodelas</a></li>
-              <li><a href="#">Flexo</a></li>
-            </ul>
-          </div><!-- End footer links column-->
-
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-legal text-center position-relative">
+    <div class="copyright">
       <div class="container">
-        <div class="copyright">
-          &copy; Copyright <strong><span>UpConstruction</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/ -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-      </div>
-    </div>
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="copyright-info">
+              <span>Copyright &copy; <script>
+                  document.write(new Date().getFullYear())
+                </script>, PT Anak Bungsu Indonesia Energi</span>
+            </div>
+          </div>
 
-  </footer>
+          <div class="col-md-6">
+            <div class="footer-menu text-center text-md-right">
+              <ul class="list-unstyled">
+                <li><a href="{{ route('about') }}">Tentang</a></li>
+                <li><a href="{{ route('service') }}">Layanan</a></li>
+                <li><a href="{{ route('product') }}">Produk</a></li>
+                <li><a href="{{ route('article') }}">Artikel</a></li>
+                <li><a href="{{ route('contact') }}">Kontak</a></li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- Row end -->
+
+        <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
+          <button class="btn btn-primary" title="Back to Top">
+            <i class="fa fa-angle-double-up"></i>
+          </button>
+        </div>
+
+      </div><!-- Container end -->
+    </div><!-- Copyright end -->
+</footer>

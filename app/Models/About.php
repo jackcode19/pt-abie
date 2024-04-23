@@ -19,7 +19,9 @@ class About extends Model
         'id',
         'title',
         'image',
-        'description_1',
-        'description_2',
+        'description',
+        'sub_description',
+        'visi',
+        'misi'
     ];
 }

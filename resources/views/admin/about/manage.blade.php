@@ -75,17 +75,33 @@
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+                            
                                 <div class="form-group">
                                     <label for="name">Deskripsi 1</label>
-                                    <textarea class="form-control" rows="4" name="description_1" id="description_1" placeholder="Deskripsi ...">{{ isset($about) ? $about->description_1 : old('description_1') }}</textarea>
-                                    @error('description_1')
+                                    <textarea class="form-control" rows="4" name="description" id="summernote" placeholder="Deskripsi ...">{{ isset($about) ? $about->description : old('description') }}</textarea>
+                                    @error('description')
+                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="name">Sub Deskripsi</label>
+                                    <textarea class="form-control" rows="3" name="sub_description" id="sub_description" placeholder="Sub Deskripsi ...">{{ isset($about) ? $about->sub_description : old('sub_description') }}</textarea>
+                                    @error('sub_description')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Deskripsi 2</label>
-                                    <textarea class="form-control" rows="3" name="description_2" id="summernote" placeholder="Sub Deskripsi ...">{{ isset($about) ? $about->description_2 : old('description_2') }}</textarea>
-                                    @error('description_2')
+                                    <label for="name">Visi</label>
+                                    <textarea class="form-control" rows="3" name="visi" id="visi" placeholder="Pengenalan ...">{{ isset($about) ? $about->visi : old('visi') }}</textarea>
+                                    @error('visi')
+                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Misi</label>
+                                    <textarea class="form-control" rows="3" name="misi" id="misi" placeholder="Pengenalan ...">{{ isset($about) ? $about->misi : old('misi') }}</textarea>
+                                    @error('misi')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

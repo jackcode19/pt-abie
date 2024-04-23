@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\CategoryArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;
@@ -81,7 +82,8 @@ class ArticleController extends Controller
 
     public function create()
     {
-        return view('admin.article.form');
+        $dataCategory['categoryList'] = CategoryArticle::get();
+        return view('admin.article.form', $dataCategory);
     }
 
     public function store(Request $request)
@@ -112,7 +114,8 @@ class ArticleController extends Controller
     {
         try {
             $data['article'] = Article::findOrFail($id);
-            return view('admin.article.form', $data);
+            $dataCategory['categoryList'] = CategoryArticle::get();
+            return view('admin.article.form', $data, $dataCategory);
         } catch (\Exception $error) {
             return redirect()->back()->with('error', $error->getMessage());
         }
