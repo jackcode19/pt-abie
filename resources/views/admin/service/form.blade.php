@@ -13,6 +13,7 @@
             $actionUrl = route('service.store');
         }
     @endphp
+{{ Session::get('message') }}
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -45,9 +46,8 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Title</label>
-                                    <input type="text" class="form-control" name="title" id="title"
+                                    <input type="text" required class="form-control" name="title" id="title"
                                         placeholder="Title Service" value="{{ isset($service) ? $service->title : old('title') }}">
-
                                     @error('title')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Deskripsi</label>
-                                    <textarea class="form-control" rows="3" name="description" id="description" placeholder="Deskripsi ...">{{ isset($service) ? $service->description : old('description') }}</textarea>
+                                    <textarea class="form-control" required rows="3" name="description" id="description" placeholder="Deskripsi ...">{{ isset($service) ? $service->description : old('description') }}</textarea>
                                     @error('description')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class ServiceController extends Controller
@@ -53,7 +54,7 @@ class ServiceController extends Controller
                 })
 
             ->addColumn('service_logo', function ($service) {
-                    $url = asset('/images/services/' . $service->service_logo);
+                    $url = Storage::url('public/services/'. $service->service_logo);
                     return '<img src="' . $url . '" alt="" style="width: 170px;" height="120px" class="img-rounded" />';
                 })
 
@@ -80,16 +81,22 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+        // $request->validate([
+        //     'title' => 'required|unique:posts|max:255',
+        //     'logo_service' => 'required',
+        //     'description' => 'required',
+        // ]);
+
         $input = $request->all();
 
         try {
             if ($request->hasFile('service_logo')) {
-                $imageFile = $request->service_logo;
-                $serviceLogo = $input['title'] . '.' . $imageFile->extension();
-                $imageFile->move(public_path() . '/images/services/', $serviceLogo);
+                $extension = $request->file('service_logo')->extension();
+                $imageName = time() . '.' . $extension;
+                $path = $request->file('service_logo')->storeAs('public/services', $imageName);
             }
 
-            $input['service_logo'] = $serviceLogo;
+            $input['service_logo'] = $imageName;
             $createService = Service::create($input);
 
             if ($createService) {
@@ -98,7 +105,8 @@ class ServiceController extends Controller
             return redirect()->back()->with('error', 'Gagal menambahkan service baru');
 
         } catch (\Exception $error) {
-            return redirect()->back()->with($error->getMessage());
+            // return redirect()->back()->with('error', $error->getMessage());
+            return $error->getMessage();
         }
     }
 
@@ -115,17 +123,16 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $service = Service::findOrFail($id);
-        $pathLogo = public_path() . '/images/services/' . $service->service_logo;
 
         if ($request->hasFile('service_logo')) {
-            File::delete($pathLogo);
-            $imageFile = $request->service_logo;
-            $serviceLogo = $service['title'] . '.' . $imageFile->extension();
-            $imageFile->move(public_path(). '/images/services/', $serviceLogo);
+            Storage::delete('public/services/'. $service->service_logo);
+            $extension = $request->file('service_logo')->extension();
+            $imageName = time() . '.' . $extension;
+            $path = $request->file('service_logo')->storeAs('public/services', $imageName);
         } elseif($service->service_logo) {
-            $serviceLogo = $service->service_logo;
+            $imageName = $service->service_logo;
         } else {
-            $serviceLogo = null;
+            $imageName = null;
         }
 
         $inputUpdate = $request->all();
@@ -136,7 +143,7 @@ class ServiceController extends Controller
             $serviceUpdate = $service;
 
             if ($serviceUpdate->service_logo) {
-                $inputUpdate['service_logo'] = $serviceLogo;
+                $inputUpdate['service_logo'] = $imageName;
             }
 
             $serviceUpdate->update($inputUpdate);
@@ -146,7 +153,7 @@ class ServiceController extends Controller
             }
             return redirect()->back()->with('error', 'Gagal mengupdate servie');
         } catch (\Exception $error) {
-            return redirect()->back()->with('error', $error->getMessage());
+             return $error->getMessage();
         }
     }
 
@@ -155,8 +162,7 @@ class ServiceController extends Controller
         $service = Service::findOrfail($id);
 
         try {
-            $pathLogo = public_path(). '/images/services/' . $service->service_logo;
-            File::delete($pathLogo);
+            Storage::delete('public/services/'. $service->service_logo);
 
             $serviceDelete = $service->delete();
 
@@ -165,7 +171,7 @@ class ServiceController extends Controller
             }
             return redirect()->back()->with('error', 'Gagal menghapus data service');
         } catch (\Exception $error) {
-            return redirect()->back()->with('error', $error->getMessage());
+             return $error->getMessage();
         }
     }
 }

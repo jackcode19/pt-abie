@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="" class="nav-link {{ request()->is('product/*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-book"></i>
                         <p>
                             Master Product
@@ -67,7 +67,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="" class="nav-link {{ request()->is('article/*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Master Article
@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('category-article.manage') }}" class="nav-link {{ request()->is('category/*') ? 'active' : '' }} ">
+                            <a href="{{ route('category-article.manage') }}" class="nav-link {{ request()->is('category-article/*') ? 'active' : '' }} ">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Category Article</p>
                             </a>
@@ -116,7 +116,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('article.manage') }}" class="nav-link {{ request()->is('article/*') ? 'active' : '' }}">
+                    <a href="{{ route('article.manage') }}" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Gallery

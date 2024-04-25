@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use App\Models\CategoryArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
 
@@ -60,7 +62,7 @@ class ArticleController extends Controller
                 })
 
             ->addColumn('image', function ($article) {
-                    $url = asset('/images/articles/' . $article->image);
+                    $url = Storage::url('articles/'. $article->image);
                     return '<img src="' . $url . '" alt="" style="width: 170px;" height="120px" class="img-rounded" />';
                 })
 
@@ -86,18 +88,18 @@ class ArticleController extends Controller
         return view('admin.article.form', $dataCategory);
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         $input = $request->all();
 
         try {
             if ($request->hasFile('image')) {
-                $imageFile = $request->image;
-                $articleImage = $input['title'] . '.' . $imageFile->extension();
-                $imageFile->move(public_path() . '/images/articles/', $articleImage);
+                $extension = $request->file('image')->extension();
+                $imageName = time() . '.' . $extension;
+                $path = $request->file('image')->storeAs('public/articles', $imageName);
             }
 
-            $input['image'] = $articleImage;
+            $input['image'] = $imageName;
             
             $createArtikel = Article::create($input);
 
@@ -121,20 +123,19 @@ class ArticleController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
         $article = Article::findOrFail($id);
-        $pathImage = public_path() . '/images/articles/' . $article->image;
 
         if ($request->hasFile('image')) {
-            File::delete($pathImage);
-            $imageFile = $request->image;
-            $articleImage = $article['title'] . '.' . $imageFile->extension();
-            $imageFile->move(public_path(). '/images/articles/', $articleImage);
+            Storage::delete('public/articles/'. $article->image);
+            $extension = $request->file('image')->extension();
+            $imageName = time() . '.' . $extension;
+            $path = $request->file('image')->storeAs('public/articles', $imageName);
         } elseif($article->image) {
-            $articleImage = $article->image;
+            $imageName = $article->image;
         } else {
-            $articleImage = null;
+            $imageName = null;
         }
 
         $inputUpdate = $request->all();
@@ -143,7 +144,7 @@ class ArticleController extends Controller
             $updateArticle = $article;
 
             if ($updateArticle->image) {
-                $inputUpdate['image'] = $articleImage;
+                $inputUpdate['image'] = $imageName;
             }
 
             $updateArticle = $article->update($inputUpdate);
@@ -162,8 +163,8 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
 
         try {
-            $pathImage = public_path() . '/images/articles/' . $article->image;
-            File::delete($pathImage);
+            // File::delete('public/articles/', $article->image);
+            Storage::delete('public/articles/'. $article->image);
             
             $articleDelete = $article->delete();
 

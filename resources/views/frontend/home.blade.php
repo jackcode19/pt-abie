@@ -21,7 +21,7 @@
     </div>
 
     @foreach ($dataSlider as $slider)
-      <div class="banner-carousel-item-custom" style="background-image:url('images/sliders/{{ $slider->slider_image }}')">
+      <div class="banner-carousel-item-custom" style="background-image:url('{{ Storage::url('sliders/'. $slider->slider_image) }}')">
       <div class="slider-content text-right">
           <div class="container h-100">
             <div class="row align-items-center h-100">
@@ -196,7 +196,7 @@
             @foreach ($dataService as $service)
               <div class="ts-service-box d-flex">
                 <div class="ts-service-box-img">
-                  <img loading="lazy" class="service-img" src="images/services/{{ $service->service_logo }}" alt="service-icon">
+                  <img loading="lazy" class="service-img" src="{{ Storage::url('services/'. $service->service_logo) }}" alt="service-icon">
                 </div>
                 <div class="ts-service-box-info">
                   <h3 class="service-box-title"><a href="#">{{ $service->title }}</a></h3>
@@ -261,17 +261,17 @@
       <!--/ Title row end -->
       <div class="row">
 
-        @foreach ($dataProduct as $product)
+        @foreach ($dataProduct->take(6) as $product)
           <div class="col-lg-4 col-md-6 mb-5">
             <div class="ts-service-box">
                 <div class="ts-service-image-wrapper">
-                  <img loading="lazy" class="product-img" src="images/products/{{ $product->product_image }}" alt="service-image">
+                  <img loading="lazy" class="product-img" src="{{ Storage::url('products/'. $product->product_image) }}" alt="service-image">
                 </div>
                 <div class="d-flex">
                   <div class="ts-service-info">
                       <h3 class="service-box-title"><a href="service-single.html">{{ $product->product_name }}</a></h3>
                       <p>{!! Str::limit($product->description, 170, ' ...') !!}</p>
-                      <a class="learn-more d-inline-block" href="service-single.html" aria-label="service-details"><i class="fa fa-caret-right"></i> Baca Selengkapnya</a>
+                      <a class="learn-more d-inline-block" href="{{ route('productDetail', $product->id) }}" aria-label="service-details"><i class="fa fa-caret-right"></i> Baca Selengkapnya</a>
                   </div>
                 </div>
             </div><!-- Service1 end -->
@@ -314,7 +314,7 @@
                 @foreach ($dataClient as $client)
                   <div class="col-sm-4 col-6">
                   <figure class="clients-logo">
-                      <a href="#!"><img loading="lazy" class="img-fluid" src="images/clients/{{ $client->client_logo }}" alt="clients-logo" /></a>
+                      <a href="#!"><img loading="lazy" class="img-fluid" src="{{ Storage::url('clients/'. $client->client_logo) }}" alt="clients-logo" /></a>
                   </figure>
                 </div><!-- Client 3 end -->
 
@@ -343,17 +343,17 @@
 
       <div class="row">
 
-        @foreach ($dataArticle as $article)
+        @foreach ($dataArticle->take(6) as $article)
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="latest-post">
                 <div class="latest-post-media">
-                  <a href="news-single.html" class="latest-post-img">
-                      <img loading="lazy" class="post-img" src="images/articles/{{ $article->image }}" alt="img">
+                  <a href="{{ route('articleDetail', $article->id) }}" class="latest-post-img">
+                      <img loading="lazy" class="post-img" src="{{ Storage::url('articles/'. $article->image) }}" alt="img">
                   </a>
                 </div>
                 <div class="post-body">
                   <h4 class="post-title">
-                      <a href="news-single.html" class="d-inline-block">{{ $article->title }}</a>
+                      <a href="{{ route('articleDetail', $article->id) }}" class="d-inline-block">{{ $article->title }}</a>
                   </h4>
                   <div class="latest-post-meta">
                       <span class="post-item-date">

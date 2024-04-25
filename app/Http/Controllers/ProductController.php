@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\CategoryProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
 
@@ -76,7 +78,8 @@ class ProductController extends Controller
                 })
 
             ->addColumn('product_image', function ($product) {
-                    $url = asset('/images/products/' . $product->product_image);
+                    // $url = asset('/storage/products/' . $product->product_image);
+                    $url = Storage::url('products/'. $product->product_image);
                     return '<img src="' . $url . '" alt="" style="width: 170px;" height="120px" class="img-rounded" />';
                 })
 
@@ -103,19 +106,18 @@ class ProductController extends Controller
         return view('admin.product.form', $category);
     }
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $input = $request->all();
 
         try {
-
             if ($request->hasFile('product_image')) {
-                $imageFile = $request->product_image;
-                $productImage = $input['product_name'] . '.' . $imageFile->extension();
-                $imageFile->move(public_path(). '/images/products/', $productImage);
+            $extension = $request->file('product_image')->extension();
+            $imageName = time() . '.' . $extension;
+            $path = $request->file('product_image')->storeAs('public/products', $imageName);
             }
 
-            $input['product_image'] = $productImage;
+            $input['product_image'] = $imageName;
             $createProduct = Product::create($input);
 
             if ($createProduct) {
@@ -124,6 +126,7 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'Gagal menambahkan product baru');
         } catch (\Exception $error) {
             return redirect()->back()->with('error', $error->getMessage());
+            // return $error->getMessage();
         }
     }
 
@@ -138,20 +141,19 @@ class ProductController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
-        $pathImageProduct = public_path() . '/images/products/' . $product->product_image;
-
+        
         if ($request->hasFile('product_image')) {
-            File::delete($pathImageProduct);
-            $imageFile = $request->product_image;
-            $productImage = $product['product_name'] . '.' . $imageFile->extension();
-            $imageFile->move(public_path(). '/images/products/', $productImage);
+            Storage::delete('public/products/'. $product->product_image);
+            $extension = $request->file('product_image')->extension();
+            $imageName = time() . '.' . $extension;
+            $path = $request->file('product_image')->storeAs('public/products', $imageName);
         } elseif($product->product_image) {
-            $productImage = $product->product_image;
+            $imageName = $product->product_image;
         } else {
-            $productImage = null;
+            $imageName = null;
         }
 
         $inputUpdate = $request->all();
@@ -160,7 +162,7 @@ class ProductController extends Controller
             $productUpdate = $product;
 
             if ($productUpdate->product_image) {
-                $inputUpdate['product_image'] = $productImage;
+                $inputUpdate['product_image'] = $imageName;
             }
 
             $productUpdate = $product->update($inputUpdate);

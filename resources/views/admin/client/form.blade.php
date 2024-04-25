@@ -45,7 +45,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Title</label>
-                                    <input type="text" class="form-control" name="title" id="title"
+                                    <input type="text" class="form-control" name="title" id="title" required
                                         placeholder="Title Client" value="{{ isset($client) ? $client->title : old('title') }}">
 
                                     @error('title')
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Deskripsi</label>
-                                    <textarea class="form-control" rows="3" name="description" id="description" placeholder="Deskripsi ...">{{ isset($client) ? $client->description : old('description') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="description" id="description" placeholder="Deskripsi ..." required>{{ isset($client) ? $client->description : old('description') }}</textarea>
                                     @error('description')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror

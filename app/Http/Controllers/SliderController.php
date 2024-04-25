@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class SliderController extends Controller
@@ -54,7 +55,7 @@ class SliderController extends Controller
                 })
 
             ->addColumn('slider_image', function ($slider) {
-                    $url = asset('/images/sliders/' . $slider->slider_image);
+                    $url = Storage::url('sliders/'. $slider->slider_image);
                     return '<img src="' . $url . '" alt="" style="width: 170px;" height="120px" class="img-rounded" />';
                 })
 
@@ -85,12 +86,12 @@ class SliderController extends Controller
 
         try {
             if ($request->hasFile('slider_image')) {
-                $imageFile = $request->slider_image;
-                $sliderImage = $input['title'] . '.' . $imageFile->extension();
-                $imageFile->move(public_path(). '/images/sliders/', $sliderImage);
+                $extension = $request->file('slider_image')->extension();
+                $imageName = time() . '.' . $extension;
+                $path = $request->file('slider_image')->storeAs('public/sliders', $imageName);
             }
 
-            $input['slider_image'] = $sliderImage;
+            $input['slider_image'] = $imageName;
             $createSlider = Slider::create($input);
 
             if ($createSlider) {
@@ -119,14 +120,14 @@ class SliderController extends Controller
         $pathImage = public_path() . '/images/sliders/' . $slider->slider_image;
 
         if ($request->hasFile('slider_image')) {
-            File::delete($pathImage);
-            $imageFile = $request->slider_image;
-            $sliderImage = $slider['title'] . '.' . $imageFile->extension();
-            $imageFile->move(public_path(). '/images/sliders/', $sliderImage);
+            Storage::delete('public/sliders/'. $slider->slider_image);
+            $extension = $request->file('slider_image')->extension();
+            $imageName = time() . '.' . $extension;
+            $path = $request->file('slider_image')->storeAs('public/sliders', $imageName);
         } elseif($slider->slider_image) {
-            $sliderImage = $slider->slider_image;
+            $imageName = $slider->slider_image;
         } else {
-            $sliderImage = null;
+            $imageName = null;
         }
 
             $inputUpdate = $request->all();
@@ -134,7 +135,7 @@ class SliderController extends Controller
             $sliderUpdate = $slider;
 
             if ($sliderUpdate->slider_image) {
-                $inputUpdate['slider_image'] = $sliderImage;
+                $inputUpdate['slider_image'] = $imageName;
             }
 
             $sliderUpdate = $slider->update($inputUpdate);
@@ -153,8 +154,7 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($id);
 
         try {
-            $pathImage = public_path() . '/images/sliders/' . $slider->slider_image;
-            File::delete($pathImage);
+            Storage::delete('public/sliders/', $slider->slider_image);
 
             $sliderDelete = $slider->delete();
 

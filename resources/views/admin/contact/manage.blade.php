@@ -45,7 +45,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Nama Perusahaan</label>
-                                    <input type="text" class="form-control" name="name_company" id="name_company"
+                                    <input type="text" class="form-control" name="name_company" id="name_company" required
                                         placeholder="Nama Perusahaan" value="{{ isset($contact) ? $contact->name_company : old('name_company') }}">
 
                                     @error('name')
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email"
+                                    <input type="email" class="form-control" name="email" id="email" required
                                         placeholder="Email" value="{{ isset($contact) ? $contact->email : old('email') }}">
 
                                     @error('name')
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">No Telepon</label>
-                                    <input type="number" class="form-control" name="phone" id="phone"
+                                    <input type="number" class="form-control" name="phone" id="phone" required
                                         placeholder="Phone" value="{{ isset($contact) ? $contact->phone : old('phone') }}">
                                     @error('phone')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Alamat</label>
-                                    <textarea class="form-control" rows="3" name="address" id="address" placeholder="Address ...">{{ isset($contact) ? $contact->address : old('address') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="address" id="address" required placeholder="Address ...">{{ isset($contact) ? $contact->address : old('address') }}</textarea>
                                     @error('description')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror

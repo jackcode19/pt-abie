@@ -29,7 +29,7 @@
         <div class="col-lg-4 col-md-6 mb-5">
         <div class="ts-service-box">
             <div class="ts-service-image-wrapper">
-              <img loading="lazy" class="service-img" src="images/services/{{ $service->service_logo }}" alt="service-image">
+              <img loading="lazy" class="service-img" src="{{ Storage::url('services/'. $service->service_logo) }}" alt="service-image">
             </div>
             <div class="d-flex">
               <div class="ts-service-info">

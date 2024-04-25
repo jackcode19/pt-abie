@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ContactController extends Controller
 {
@@ -18,17 +19,15 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
 
-        $pathLogo = public_path() . '/images/contact/' . $contact->logo;
-
         if ($request->hasFile('logo')) {
-            File::delete($pathLogo);
-            $imageFile = $request->logo;
-            $logo = $imageFile->extension();
-            $imageFile->move(public_path() . '/images/contact/', $logo);
+            Storage::delete('public/contact/'. $contact->logo);
+            $extension = $request->file('logo')->extension();
+            $imageName = time(). '.' . $extension;
+            $path = $request->file('logo')->storeAs('public/contact', $imageName);
         } elseif ($contact->logo) {
-            $logo = $contact->logo;
+            $imageName = $contact->logo;
         } else {
-            $logo = null;
+            $imageName = null;
         }
 
 
@@ -37,7 +36,7 @@ class ContactController extends Controller
             $updateContact = $contact;
             // Jika ada image baru
             if ($updateContact->logo) {
-                $inputUpdate['logo'] = $logo;
+                $inputUpdate['logo'] = $imageName;
             }
 
             $updateContact->update($inputUpdate);

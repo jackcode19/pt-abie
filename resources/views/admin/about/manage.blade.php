@@ -45,7 +45,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Judul</label>
-                                    <input type="text" class="form-control" name="title" id="title"
+                                    <input type="text" class="form-control" name="title" id="title" required
                                         placeholder="Nama Perusahaan" value="{{ isset($about) ? $about->title : old('title') }}">
 
                                     @error('title')
@@ -56,7 +56,9 @@
                                     <label for="image">Gambar Produk</label>
                                     @if (isset($about))
                                         <div class="mb-3">
-                                            <img src="{{ asset('/images/about/' . $about->image) }}" alt=""
+                                            {{-- <img src="{{ asset('/images/about/' . $about->image) }}" alt=""
+                                                style="width: 170px;" height="120px" class="img-rounded"> --}}
+                                                <img src="{{ Storage::url('abouts/'. $about->image) }}" alt=""
                                                 style="width: 170px;" height="120px" class="img-rounded">
                                         </div>
                                     @endif
@@ -77,8 +79,8 @@
                                 </div>
                             
                                 <div class="form-group">
-                                    <label for="name">Deskripsi 1</label>
-                                    <textarea class="form-control" rows="4" name="description" id="summernote" placeholder="Deskripsi ...">{{ isset($about) ? $about->description : old('description') }}</textarea>
+                                    <label for="name">Deskripsi</label>
+                                    <textarea class="form-control" rows="4" name="description" id="summernote" required placeholder="Deskripsi ...">{{ isset($about) ? $about->description : old('description') }}</textarea>
                                     @error('description')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
@@ -93,22 +95,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Visi</label>
-                                    <textarea class="form-control" rows="3" name="visi" id="visi" placeholder="Pengenalan ...">{{ isset($about) ? $about->visi : old('visi') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="visi" id="visi" required placeholder="Pengenalan ...">{{ isset($about) ? $about->visi : old('visi') }}</textarea>
                                     @error('visi')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Misi</label>
-                                    <textarea class="form-control" rows="3" name="misi" id="misi" placeholder="Pengenalan ...">{{ isset($about) ? $about->misi : old('misi') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="misi" id="misi" required placeholder="Pengenalan ...">{{ isset($about) ? $about->misi : old('misi') }}</textarea>
                                     @error('misi')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-
-                            
-
                             <div class="card-footer">
                                 <button type="submit" submitAbout="submit" class="btn btn-info btn-sm">Submit</button>
                             </div>

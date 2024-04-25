@@ -82,7 +82,7 @@
                                     <option {{ isset($article) && $article->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                     </select>
-                                    @error('category')
+                                    @error('category_id')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

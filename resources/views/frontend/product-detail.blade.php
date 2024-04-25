@@ -32,7 +32,7 @@
 
           <div id="page-slider" class="">
             <div class="item">
-              <img loading="lazy" class="product-detail" src="/images/products/{{ $dataProduct->product_image }}" alt="project-slider-image" />
+              <img loading="lazy" class="product-detail" src="{{ Storage::url('products/'. $dataProduct->product_image) }}" alt="product-image" />
             </div>
           </div><!-- Page slider end -->
 

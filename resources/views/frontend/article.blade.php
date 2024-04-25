@@ -32,7 +32,7 @@
             <div class="latest-post">
                 <div class="latest-post-media">
                   <a href="{{ route('articleDetail', $article->id) }}" class="latest-post-img">
-                      <img loading="lazy" class="post-img" src="images/articles/{{ $article->image }}" alt="img">
+                      <img loading="lazy" class="post-img" src="{{ Storage::url('articles/'. $article->image) }}" alt="img">
                   </a>
                 </div>
                 <div class="post-body">

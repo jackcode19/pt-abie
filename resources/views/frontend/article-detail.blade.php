@@ -29,7 +29,7 @@
 
         <div class="post-content post-single">
           <div class="post-media post-image">
-            <img loading="lazy" src="/images/articles/{{ $articleDetail->image }}" class="img-fluid" alt="post-image">
+            <img loading="lazy" src="{{ Storage::url('articles/'. $articleDetail->image) }}" class="img-fluid" alt="post-image">
           </div>
 
           <div class="post-body">

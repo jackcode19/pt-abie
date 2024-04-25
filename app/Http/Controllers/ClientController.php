@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class ClientController extends Controller
@@ -53,7 +54,7 @@ class ClientController extends Controller
                 })
 
             ->addColumn('client_logo', function ($client) {
-                    $url = asset('/images/clients/' . $client->client_logo);
+                    $url = Storage::url('public/clients/'. $client->client_logo);
                     return '<img src="' . $url . '" alt="" style="width: 170px;" height="120px" class="img-rounded" />';
                 })
 
@@ -85,12 +86,12 @@ class ClientController extends Controller
 
         try {
             if ($request->hasFile('client_logo')) {
-                $imageFile = $request->client_logo;
-                $clientLogo = $input['title'] . '.' . $imageFile->extension();
-                $imageFile->move(public_path(). '/images/clients/', $clientLogo);
+                $extension = $request->file('client_logo')->extension();
+                $imageName = time() . '.' . $extension;
+                $path = $request->file('client_logo')->storeAs('public/clients', $imageName);
             }
 
-            $input['client_logo'] = $clientLogo;
+            $input['client_logo'] = $imageName;
             $createClient = Client::create($input);
 
             if ($createClient) {
@@ -116,17 +117,16 @@ class ClientController extends Controller
     public function update(Request  $request, $id)
     {
         $client = Client::findOrFail($id);
-        $pathLogo = public_path() . '/images/clients/' . $client->client_logo;
 
         if ($request->hasFile('client_logo')) {
-            File::delete($pathLogo);
-            $imageFile = $request->client_logo;
-            $clientLogo = $client['title'] . '.' . $imageFile->extension();
-            $imageFile->move(public_path(). '/images/clients/', $clientLogo);
+            Storage::delete('public/clients/'. $client->client_logo);
+            $extension = $request->file('client_logo')->extension();
+            $imageName = time() . '.' . $extension;
+            $path = $request->file('client_logo')->storeAs('public/clients', $imageName);
         } elseif($client->client_logo) {
-            $clientLogo = $client->client_logo;
+            $imageName = $client->client_logo;
         } else {
-            $clientLogo = null;
+            $imageName = null;
         }
 
         $inputUpdate = $request->all();
@@ -135,7 +135,7 @@ class ClientController extends Controller
             $clientUpdate = $client;
 
             if ($clientUpdate->client_logo) {
-                $inputUpdate['client_image'] = $clientLogo;
+                $inputUpdate['client_logo'] = $imageName;
             }
 
             $clientUpdate = $client->update($inputUpdate);
@@ -154,8 +154,7 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
 
         try {
-            $pathLogo = public_path() . '/images/clients/' . $client->client_logo;
-            File::delete($pathLogo);
+            Storage::delete('public/clients/'. $client->client_logo);
 
             $clientDelete = $client->delete();
 

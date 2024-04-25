@@ -46,12 +46,11 @@
                                     <label for="name">Nama Produk</label>
                                     <input type="text" class="form-control" name="product_name" id="product_name"
                                         placeholder="Nama Produk" value="{{ isset($product) ? $product->product_name : old('product_name') }}">
-
                                     @error('product_name')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>Kategori</label>
                                     <select class="form-control" name="category_id" id="category_id" style="width: 100%;">
                                         <option value="">Pilih kategori</option>
@@ -59,15 +58,15 @@
                                     <option {{ isset($product) && $product->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                     </select>
-                                    @error('category')
+                                    @error('category_id')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="image">Gambar Produk</label>
                                     @if (isset($product))
                                         <div class="mb-3">
-                                            <img src="{{ asset('/images/products/' . $product->product_image) }}" alt=""
+                                            <img src="{{ Storage::url('products/' . $product->product_image) }}" alt=""
                                                 style="width: 170px;" height="120px" class="img-rounded">
                                         </div>
                                     @endif

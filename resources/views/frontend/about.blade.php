@@ -35,7 +35,8 @@
           
           <div id="page-slider" class="page-slider small-bg">
 
-              <div class="item" style="background-image:url('images/about/{{ $dataAbout->image }}')">
+              {{-- <div class="item" style="background-image:url('images/about/{{ $dataAbout->image }}')"> --}}
+                <div class="item" style="background-image:url('{{ Storage::url('abouts/'. $dataAbout->image) }}')">
                 <div class="container">
                     <div class="box-slider-content">
                       <div class="box-slider-text">

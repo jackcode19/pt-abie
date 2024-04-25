@@ -39,7 +39,7 @@
             <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;government&quot;,&quot;healthcare&quot;]">
             <div class="project-img-container">
               <a class="gallery-popup" href="images/products/{{ $product->product_image }}">
-                <img class="product-img" src="images/products/{{ $product->product_image }}" alt="project-image">
+                <img class="product-img" src="{{ Storage::url('products/'. $product->product_image) }}" alt="project-image">
                 <span class="gallery-icon"><i class="fa fa-plus"></i></span>
               </a>
               <div class="project-item-info">

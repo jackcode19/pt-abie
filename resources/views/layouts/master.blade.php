@@ -137,18 +137,6 @@
 
       });
 
-        function getUrl()
-        {
-            window.location.href = "";
-        }
-        $(document).ready(function() {
-            countOrder();
-            getNotif();
-            setInterval(() => {
-                getNotif();
-                countOrder();
-            }, 10000);
-        });
     </script>
 </body>
 

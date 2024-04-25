@@ -1,9 +1,9 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@if (session()->has('berhasil'))
+@if (session()->has('success'))
 <script>
     Swal.fire({
         title: 'Berhasil',
-        text: "{{ session('berhasil') }}",
+        text: "{{ session('success') }}",
         icon: 'success',
         customClass: {
         confirmButton: 'btn btn-primary'
@@ -69,11 +69,11 @@
 </script>
 @endif
 
-@if (session()->has('gagal'))
+@if (session()->has('error'))
 <script>
    Swal.fire({
         title: 'Error!',
-        text: "{{ session('gagal') }}",
+        text: "{{ session('error') }}",
         icon: 'error',
         customClass: {
         confirmButton: 'btn btn-primary'

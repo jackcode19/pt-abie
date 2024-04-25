@@ -75,7 +75,7 @@ class CategoryArticleController extends Controller
             }
             return redirect()->back()->with('error', 'Gagal menambahkan kategori baru');
         } catch (\Exception $error) {
-            return redirect()->back()->with('erro', $error->getMessage());
+            return $error->getMessage();
         }
     }
 
@@ -106,7 +106,7 @@ class CategoryArticleController extends Controller
             return redirect()->back()->with('error', 'Gagal mengubah data kategori');
 
         } catch (\Exception $error) {
-            return redirect()->back()->with('error', $error->getMessage());
+            return $error->getMessage();
         }
     }
 
