@@ -22,7 +22,7 @@ class ContactController extends Controller
         if ($request->hasFile('logo')) {
             Storage::delete('public/contact/'. $contact->logo);
             $extension = $request->file('logo')->extension();
-            $imageName = time(). '.' . $extension;
+            $imageName = 'contact-' . time() . rand(1, 1000) . '.' . $extension;
             $path = $request->file('logo')->storeAs('public/contact', $imageName);
         } elseif ($contact->logo) {
             $imageName = $contact->logo;
@@ -46,7 +46,7 @@ class ContactController extends Controller
             }
             return redirect()->back()->with('error', 'Gagal mengubah data profil perusahaan');
         } catch (\Exception $error) {
-                return redirect()->back()->with($error->getMessage());
+                return $error->getMessage();
         }
     }
 }

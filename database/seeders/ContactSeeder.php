@@ -19,6 +19,7 @@ class ContactSeeder extends Seeder
             'email' => 'ptabienergi@gmail.com',
             'phone' => '081254267654',
             'address' => 'Samolo Blok 4 No.3 Ciherang Kecamatan Karangtengah Kabupaten Cianjur - Jawa Barat 43281',
+            'maps' => ''
         ]);
     }
 }

@@ -21,7 +21,7 @@ class AboutController extends Controller
         if ($request->hasFile('image')) {
             Storage::delete('public/abouts'. $about->image);
             $extension = $request->file('image')->extension();
-            $image = $about['title'] . '.' . $extension;
+            $image = 'abouts-' . time() . rand(1, 1000) . '.' . $extension;
             $path = $request->file('image')->storeAs('public/abouts', $image);
 
         } elseif ($about->image) {

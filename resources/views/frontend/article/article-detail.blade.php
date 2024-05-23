@@ -1,19 +1,13 @@
 @extends('frontend.layouts.layout')
 @section('main')
-<div id="banner-area" class="banner-area" style="background-image:url(/frontend/images/banner/banner1.jpg)">
+<div id="banner-area" class="banner-area" style="background-image:url('{{ Storage::url('articles/'. $articleDetail->image) }}')">
   <div class="banner-text">
     <div class="container">
         <div class="row">
           <div class="col-lg-12">
               <div class="banner-heading">
                 <h1 class="banner-title">Artikel</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                      <li class="breadcrumb-item"><a href="#">Home</a></li>
-                      <li class="breadcrumb-item"><a href="#">Artikel</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">{{ $articleDetail->title }}</li>
-                    </ol>
-                </nav>
+                
               </div>
           </div><!-- Col end -->
         </div><!-- Row end -->
@@ -39,7 +33,7 @@
                   <i class="far fa-user"></i><a href="#"> Admin</a>
                 </span>
                 <span class="post-cat">
-                  <i class="far fa-folder-open"></i><a href="#"> News</a>
+                  <i class="far fa-folder-open"></i><a href="#">{{ $articleDetail->category['name'] }}</a>
                 </span>
                 <span class="post-meta-date"><i class="far fa-calendar"></i>{{ $articleDetail->created_at->format('M d, Y') }}</span>
               </div>
@@ -60,12 +54,12 @@
 
         <div class="sidebar sidebar-right">
           <div class="widget recent-posts">
-            <h3 class="widget-title">Recent Posts</h3>
+            <h3 class="widget-title">Artikel Terbaru</h3>
             <ul class="list-unstyled">
                @foreach ($dataArticle as $article)
                <li class="d-flex align-items-center">
                 <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="img" src="/images/articles/{{ $article->image }}"></a>
+                  <a href="#"><img loading="lazy" alt="img" src="{{ Storage::url('articles/'. $article->image) }}"></a>
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">

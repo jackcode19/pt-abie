@@ -23,7 +23,7 @@ class ProductController extends Controller
                     'name' => 'product_name'
                 ],
                 [
-                    'label' => 'Image',
+                    'label' => 'Gambar',
                     'name' => 'product_image'
                 ],
                 // [
@@ -31,12 +31,8 @@ class ProductController extends Controller
                 //     'name' => 'category_name'
                 // ],
                 [
-                    'label' => 'Description',
+                    'label' => 'Deskripsi',
                     'name' => 'description'
-                ],
-                [
-                    'name' => 'updated_at',
-                    'label' => 'Perubahan Terakhir',
                 ],
                 [
                     'label' => 'Action',
@@ -113,7 +109,7 @@ class ProductController extends Controller
         try {
             if ($request->hasFile('product_image')) {
             $extension = $request->file('product_image')->extension();
-            $imageName = time() . '.' . $extension;
+            $imageName = 'product-' . time() . rand(1, 1000) . '.' . $extension;
             $path = $request->file('product_image')->storeAs('public/products', $imageName);
             }
 
@@ -121,9 +117,9 @@ class ProductController extends Controller
             $createProduct = Product::create($input);
 
             if ($createProduct) {
-                return redirect()->route('product.manage')->with('success', 'Berhasil menambahkan product baru');
+                return redirect()->route('product.manage')->with('success', 'Berhasil menambahkan produk baru');
             }
-            return redirect()->back()->with('error', 'Gagal menambahkan product baru');
+            return redirect()->back()->with('error', 'Gagal menambahkan produk baru');
         } catch (\Exception $error) {
             return redirect()->back()->with('error', $error->getMessage());
             // return $error->getMessage();
@@ -148,7 +144,7 @@ class ProductController extends Controller
         if ($request->hasFile('product_image')) {
             Storage::delete('public/products/'. $product->product_image);
             $extension = $request->file('product_image')->extension();
-            $imageName = time() . '.' . $extension;
+            $imageName = 'product-' . time() . rand(1, 1000) . '.' . $extension;
             $path = $request->file('product_image')->storeAs('public/products', $imageName);
         } elseif($product->product_image) {
             $imageName = $product->product_image;
@@ -168,9 +164,9 @@ class ProductController extends Controller
             $productUpdate = $product->update($inputUpdate);
 
             if ($productUpdate) {
-                return redirect()->route('product.manage')->with('success', 'Berhasil mengupdate data product');
+                return redirect()->route('product.manage')->with('success', 'Berhasil Mengubah data product');
             }
-            return redirect()->back()->with('error', 'Gagal mengupdate data product');
+            return redirect()->back()->with('error', 'Gagal mengubah data product');
         } catch (\Exception $error) {
             return redirect()->back()->with('error', $error->getMessage());
         }
@@ -186,9 +182,9 @@ class ProductController extends Controller
             $deleteProduct = $product->delete();
 
             if ($deleteProduct) {
-                return redirect()->route('product.manage')->with('success', 'Berhasil menghapus data product');
+                return redirect()->route('product.manage')->with('success', 'Berhasil mengubah data product');
             }
-            return redirect()->back()->with('error', 'Gagal menghapus data product');
+            return redirect()->back()->with('error', 'Gagal mengubah data product');
 
         } catch (\Exception $error) {
         return redirect()->back()->with('error', $error->getMessage());

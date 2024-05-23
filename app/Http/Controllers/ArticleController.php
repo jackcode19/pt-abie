@@ -49,7 +49,7 @@ class ArticleController extends Controller
                 'image',
                 'content',
             ])
-            ->orderBy('title', 'asc');
+            ->orderBy('created_at', 'asc');
 
             return DataTables::of($article)
 
@@ -95,7 +95,7 @@ class ArticleController extends Controller
         try {
             if ($request->hasFile('image')) {
                 $extension = $request->file('image')->extension();
-                $imageName = time() . '.' . $extension;
+                $imageName = 'article-' . time() . rand(1, 1000) . '.' . $extension;
                 $path = $request->file('image')->storeAs('public/articles', $imageName);
             }
 
@@ -130,7 +130,7 @@ class ArticleController extends Controller
         if ($request->hasFile('image')) {
             Storage::delete('public/articles/'. $article->image);
             $extension = $request->file('image')->extension();
-            $imageName = time() . '.' . $extension;
+            $imageName = 'article-' . time() . rand(1, 1000) . '.' . $extension;
             $path = $request->file('image')->storeAs('public/articles', $imageName);
         } elseif($article->image) {
             $imageName = $article->image;

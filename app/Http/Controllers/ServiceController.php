@@ -92,7 +92,7 @@ class ServiceController extends Controller
         try {
             if ($request->hasFile('service_logo')) {
                 $extension = $request->file('service_logo')->extension();
-                $imageName = time() . '.' . $extension;
+                $imageName = 'service-' . time() . rand(1, 1000) . '.' . $extension;
                 $path = $request->file('service_logo')->storeAs('public/services', $imageName);
             }
 
@@ -127,7 +127,7 @@ class ServiceController extends Controller
         if ($request->hasFile('service_logo')) {
             Storage::delete('public/services/'. $service->service_logo);
             $extension = $request->file('service_logo')->extension();
-            $imageName = time() . '.' . $extension;
+            $imageName = 'service-' . time() . rand(1, 1000) . '.' . $extension;
             $path = $request->file('service_logo')->storeAs('public/services', $imageName);
         } elseif($service->service_logo) {
             $imageName = $service->service_logo;

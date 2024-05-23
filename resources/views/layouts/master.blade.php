@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PT - Sibungsu</title>
+    <title>Admin - PT Abie</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -131,10 +131,23 @@
             });
         }
 
-        $(function () {
+        // $(function () {
         // Summernote
-        $("#summernote").summernote();
+        // $("#summernote").summernote();
 
+       $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
       });
 
     </script>

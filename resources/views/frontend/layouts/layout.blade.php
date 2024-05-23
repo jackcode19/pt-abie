@@ -5,7 +5,7 @@
   <!-- Basic Page Needs
 ================================================== -->
   <meta charset="utf-8">
-  <title>PT - Abie</title>
+  <title>PT Anak Bungsu Indonesia Energi</title>
 
   <!-- Mobile Specific Metas
 ================================================== -->
@@ -17,7 +17,7 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="/frontend/image/png" href="images/favicon.png">
+  <link rel="icon" type="/frontend/image/png" href="/frontend/images/logo2.png">
 
   <!-- CSS
 ================================================== -->

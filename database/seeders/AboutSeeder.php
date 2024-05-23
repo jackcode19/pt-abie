@@ -14,9 +14,8 @@ class AboutSeeder extends Seeder
     public function run(): void
     {
         About::create([
-            'title' => 'PT ANAK BUNGSU INDONESIA ENERGI',
             'image' => '',
-            'description' => 'PT. ANAK BUNGSU INDONESIA ENERGI adalah perusahaan yang bergerak dalam bidang
+            'aboutme' => 'PT. ANAK BUNGSU INDONESIA ENERGI adalah perusahaan yang bergerak dalam bidang
 niaga Bahan Bakar Minyak (BBM) yang terdaftar secara resmi sebagai Agen dan Transportir
 BBM Industri Pertamina. Kami juga perusahaan yang bergerak dalam bidang Kontruksi
 Pembangunan yang dapat bersaing secara profesional baik dalam bidang jasa, alat dan
@@ -25,9 +24,9 @@ untuk sektor industri, transportasi, kontraktor, pertambangan, perkebunan, kapal
 sebagainya. Memiliki tim yang sudah berpengalaman sebagai Mobile Bunker Agen / Agen
 Insdutri Pertamina, kami berkomitmen dalam menjaga standar mutu produk dan
 pelayanan pelanggan.',
-            'sub_description' => '',
-            'visi' => '',
-            'misi' => ''
+            'visi_misi' => '',
+            'ourvalue' => '',
+            'ouractivity' => ''
         ]);
     }
 }

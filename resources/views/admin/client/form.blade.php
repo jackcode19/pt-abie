@@ -56,7 +56,7 @@
                                     <label for="image">Logo</label>
                                     @if (isset($client))
                                         <div class="mb-3">
-                                            <img src="{{ asset('/images/clients/' . $client->client_logo) }}" alt=""
+                                            <img src="{{ Storage::url('clients/'. $client->client_logo) }}" alt=""
                                                 style="width: 170px;" height="120px" class="img-rounded">
                                         </div>
                                     @endif

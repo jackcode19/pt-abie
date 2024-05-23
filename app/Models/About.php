@@ -17,11 +17,10 @@ class About extends Model
 
     protected $fillable = [
         'id',
-        'title',
+        'aboutme',
         'image',
-        'description',
-        'sub_description',
-        'visi',
-        'misi'
+        'visi_misi',
+        'ourvalue',
+        'ouractivity',
     ];
 }

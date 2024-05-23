@@ -55,7 +55,7 @@
                                     <label for="image">Gambar Produk</label>
                                     @if (isset($slider))
                                         <div class="mb-3">
-                                            <img src="{{ asset('/images/sliders/' . $slider->slider_image) }}" alt=""
+                                            <img src="{{ Storage::url('sliders/'. $slider->slider_image) }}" alt=""
                                                 style="width: 170px;" height="120px" class="img-rounded">
                                         </div>
                                     @endif

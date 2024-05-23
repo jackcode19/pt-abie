@@ -6,13 +6,7 @@
         <div class="row">
           <div class="col-lg-12">
               <div class="banner-heading">
-                <h1 class="banner-title">Contact</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                      <li class="breadcrumb-item"><a href="#">Home</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Kontak</li>
-                    </ol>
-                </nav>
+                <h1 class="banner-title">Kontak</h1>
               </div>
           </div><!-- Col end -->
         </div><!-- Row end -->
@@ -72,9 +66,11 @@
 
     <div class="gap-60"></div>
 
-    {{-- <div class="google-map">
-      <div id="map" class="map" data-latitude="40.712776" data-longitude="-74.005974" data-marker="images/marker.png" data-marker-name="Constra"></div>
-    </div> --}}
+    <div class="google-map">
+      {{-- <div id="map" class="map"> --}}
+        <iframe src="https://www.google.com/maps/embed?pb={{ $dataContact->maps }}" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      {{-- </div> --}}
+    </div>
 
     <div class="gap-40"></div>
 

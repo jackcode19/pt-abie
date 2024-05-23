@@ -87,7 +87,7 @@ class ClientController extends Controller
         try {
             if ($request->hasFile('client_logo')) {
                 $extension = $request->file('client_logo')->extension();
-                $imageName = time() . '.' . $extension;
+                $imageName = 'client-' . time() . rand(1, 1000) . '.' . $extension;
                 $path = $request->file('client_logo')->storeAs('public/clients', $imageName);
             }
 
@@ -121,7 +121,7 @@ class ClientController extends Controller
         if ($request->hasFile('client_logo')) {
             Storage::delete('public/clients/'. $client->client_logo);
             $extension = $request->file('client_logo')->extension();
-            $imageName = time() . '.' . $extension;
+            $imageName = 'client-' . time() . rand(1, 1000) . '.' . $extension;
             $path = $request->file('client_logo')->storeAs('public/clients', $imageName);
         } elseif($client->client_logo) {
             $imageName = $client->client_logo;
@@ -141,9 +141,9 @@ class ClientController extends Controller
             $clientUpdate = $client->update($inputUpdate);
 
             if ($clientUpdate) {
-                return redirect()->route('client.manage')->with('success', 'Berhasil mengupdate data klien');
+                return redirect()->route('client.manage')->with('success', 'Berhasil mengubah data klien');
             }
-            return redirect()->back()->with('error', 'Gagal mengupdate data klien');
+            return redirect()->back()->with('error', 'Gagal mengubah data klien');
         } catch (\Exception $error) {
             return redirect()->back()->with('error', $error->getMessage());
         }

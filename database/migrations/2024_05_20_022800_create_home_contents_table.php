@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gallery_controllers', function (Blueprint $table) {
+        Schema::create('home_contents', function (Blueprint $table) {
             $table->id();
+            $table->text('about_us_summary')->nullable();
+            $table->text('about_us_vision')->nullable();
+            $table->text('about_us_mision')->nullable();
+            $table->text('about_us_value')->nullable();
+            
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gallery_controllers');
+        Schema::dropIfExists('home_contents');
     }
 };

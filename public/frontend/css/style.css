@@ -11,7 +11,7 @@ body {
 
 body,
 p {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased !important;
     line-height: 26px;
@@ -26,7 +26,7 @@ h5,
 h6 {
     color: #212121;
     font-weight: 700;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased !important;
 }
@@ -495,7 +495,7 @@ a[href^="tel"] {
     font-weight: 700;
     text-transform: uppercase;
     color: #fff;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     transition: 350ms;
     font-size: 14px;
 }
@@ -649,12 +649,13 @@ ul.top-info li p.info-text {
 .header {
     background: #fff;
     position: relative;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .header-one,
 .header-one .site-navigation {
     background: #fff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .header-one .navbar-collapse {
@@ -666,8 +667,9 @@ ul.top-info li p.info-text {
         width: max-content;
         overflow-y: auto;
         padding: 0px;
+        background-color: #fff;
         /* background-color: rgba(0, 0, 0, 0.3); */
-        backdrop-filter: blur(3px);
+        /* backdrop-filter: blur(3px); */
     }
 }
 
@@ -675,6 +677,12 @@ ul.top-info li p.info-text {
     padding-left: 0;
     padding-right: 30px;
 }
+
+.header-two ul.navbar-nav > li {
+    padding-left: 0;
+    padding-right: 30px;
+}
+
 @media (max-width: 991px) {
     .header-one ul.navbar-nav > li {
         padding: 5;
@@ -724,6 +732,7 @@ ul.navbar-nav > li.active > a {
 }
 
 /*-- Logo --*/
+
 .logo img {
     width: auto;
     height: 35px;
@@ -731,13 +740,14 @@ ul.navbar-nav > li.active > a {
 
 .header-one .logo img {
     width: auto;
-    height: 100px;
-    padding: 10px;
+    height: 80px;
+    padding: 5px;
 }
 
 .header-two .logo img {
     width: auto;
     height: 100px;
+    /* padding: 10px 10px 10px 10px; */
 }
 
 /* header right */
@@ -809,7 +819,7 @@ ul.top-info-box li .info-box span.info-icon {
 
 ul.top-info-box li .info-box .info-box-content {
     display: inline-block;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     flex-direction: column;
 }
 
@@ -907,7 +917,7 @@ ul.navbar-nav > li {
 
 @media (max-width: 991px) {
     .header-two ul.navbar-nav > li {
-        padding: 5;
+        padding: 0 5px 0 5px;
         width: 100%;
     }
 }
@@ -932,7 +942,7 @@ ul.navbar-nav > li > a i {
 @media (max-width: 991px) {
     ul.navbar-nav > li > a i {
         float: right;
-        background: transparent;
+        background: #b91c1c;
         padding: 6px 10px;
         margin-top: 7px;
     }
@@ -950,7 +960,7 @@ ul.navbar-nav > li > a:after {
 }
 
 ul.navbar-nav > li > a {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #fff !important;
     text-rendering: optimizeLegibility;
     font-weight: 700 !important;
@@ -965,11 +975,13 @@ ul.navbar-nav > li > a {
 
 .navbar-light ul.navbar-nav > li > a {
     color: #000 !important;
+    letter-spacing: 0.5px;
     font-size: 13px;
 }
 
 .header-two .navbar-light ul.navbar-nav > li > a {
-    color: #fff !important;
+    color: #000 !important;
+    letter-spacing: 0.5px;
     font-size: 13px;
 }
 
@@ -1040,7 +1052,7 @@ ul.navbar-nav > li > a {
 }
 
 .dropdown-menu li a {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Roboto", sans-serif;
     display: block;
     font-size: 12px;
     text-transform: uppercase;
@@ -1228,32 +1240,35 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
 ================================================== */
 /*-- Main slide --*/
 .banner-carousel .banner-carousel-item {
-    height: 100vh;
-    color: #fff;
-    background-position: 50% 50%;
-    background-size: cover;
+    height: 90vh;
+    /* color: #fff; */
     background-blend-mode: multiply;
-    /* background-color: #6b7280; */
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    background-size: 100% 100%;
 }
 
 .banner-carousel .banner-carousel-item-custom {
-    height: 100vh;
-    background-blend-mode: multiply;
-    color: #fff;
-    /* background: #374151; */
-    background-color: rgba(0, 0, 0, 0.5);
-    background-position: 50% 50%;
-    background-size: cover;
+    height: 90vh;
+    background-blend-mode: lighten;
+    /* color: #fff; */
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    background-size: 100% 100%;
 }
 @media (max-width: 991px) {
     .banner-carousel .banner-carousel-item {
-        height: 550px;
+        height: 450px;
+        background-position: 50% 50%;
     }
 }
 @media (max-width: 575px) {
     .banner-carousel .banner-carousel-item-custom {
-        height: 550px;
+        /* background-size: cover; */
+        height: 450px;
+        background-position: 50% 50%;
     }
 }
 
@@ -1531,7 +1546,8 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
 }
 
 .call-to-action-box .action-style-box {
-    background: #b91c1c;
+    /* background: #b91c1c; */
+    background-color: #272d33;
     padding: 30px;
 }
 
@@ -2045,9 +2061,33 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
     transition: all 0.6s ease 0s;
 }
 
-.project-img-container .product-img {
+.project-img-container .gallery-img {
     width: 100%;
     height: 250px;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 350px;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #008cba;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transition: 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: perspective(1px) scale3d(1, 1, 1);
+    -webkit-transform: scale(1.3);
+    /* transform: scale(1.1); */
 }
 
 .project-item:hover img {
@@ -2192,6 +2232,11 @@ img.client-thumb {
 .product-detail {
     width: 700px;
     height: 500px;
+}
+
+.ts-service-box .ts-service-image-wrapper .product-img {
+    width: 350px;
+    height: 300px;
 }
 
 /* Testimonial
@@ -2608,18 +2653,21 @@ img.testimonial-thumb {
 /*-- Banner --*/
 .banner-area {
     position: relative;
-    min-height: 350px;
+    min-height: 550px;
     color: #fff;
     background-position: 50% 50%;
-    background-size: cover;
+    /* background-size: cover; */
     background-blend-mode: multiply;
     background-color: rgba(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    /* background-position: 0% 0%; */
+    background-size: 100% 100%;
 }
 
 .banner-title {
     color: #fff;
     text-transform: uppercase;
-    font-size: 58px;
+    font-size: 38px;
     font-weight: 900;
 }
 @media (max-width: 767px) {
@@ -2931,6 +2979,11 @@ img.testimonial-thumb {
 /* Contact Us
 ================================================== */
 .map {
+    height: 450px;
+    z-index: 1;
+}
+
+.google-map {
     height: 450px;
     z-index: 1;
 }

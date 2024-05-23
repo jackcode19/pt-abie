@@ -22,5 +22,6 @@ class Contact extends Model
         'email',
         'address',
         'phone',
+        'maps',
     ];
 }

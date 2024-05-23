@@ -55,7 +55,7 @@
                                     <label for="image">Gambar Artikel</label>
                                     @if (isset($article))
                                         <div class="mb-3">
-                                            <img src="{{ asset('/images/articles/' . $article->image) }}" alt=""
+                                            <img src="{{ Storage::url('articles/'. $article->image) }}" alt=""
                                                 style="width: 170px;" height="120px" class="img-rounded">
                                         </div>
                                     @endif

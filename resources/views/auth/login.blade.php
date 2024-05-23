@@ -1,14 +1,14 @@
 @extends('layouts.template-auth')
 
 @section('main')
-   <div class="card card-outline card-primary">
+    <div class="card card-outline card-primary">
     <div class="card-header text-center">
         <a href="#" class="h1">Login <b>Admin</b></a>
     </div>
     <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="/login/post" method="POST">
+        <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="input-group mb-3">
                 <input type="email" class="form-control" name="email"

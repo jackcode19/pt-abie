@@ -6,7 +6,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light p-0">
                   
                   <div class="logo">
-                      <a class="d-block" href="index-2.html">
+                      <a class="d-block" href="{{ route('home') }}">
                         <img loading="" src="/frontend/images/logo.png" alt="Constra">
                       </a>
                   </div><!-- logo end -->
@@ -20,42 +20,44 @@
                       <ul class="nav navbar-nav ml-auto align-items-center">
 
                         {{-- <li class="nav-item"><a class="nav-link">Home</a></li> --}}
-                        <li class="nav-item {{ request()->is('home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                        <li class="nav-item {{ request()->is('home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home') }}">Beranda</a></li>
 
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tentang <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Profil <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu">
-                              <li><a href="{{ route('about') }}">Profile</a></li>
-                              <li><a href="team.html">Klien</a></li>
+                              <li><a href="{{ route('about') }}">Tentang Kami</a></li>
+                              <li><a href="{{ route('visi-misi') }}">Visi Misi</a></li>
+                              <li><a href="{{ route('value') }}">Nilai-Nilai Kami</a></li>
+                              {{-- <li><a href="team.html">Aktivitas Kami</a></li>
+                              <li><a href="team.html">Klien</a></li> --}}
                             </ul>
                         </li>
                         
+                        {{-- <li class="nav-item"><a class="nav-link" href="{{ route('service') }}">Layanan</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="{{ route('product') }}">Produk</a></li> --}}
+
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Layanan <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produk & Layanan <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu">
-                              <li><a href="{{ route('service') }}">Semua Layanan</a></li>
+                              <li><a href="{{ route('product') }}">Produk Kami</a></li>
+                              <li><a href="{{ route('service') }}">Layanan Kami</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produk <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Media <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu">
-                              <li><a href="{{ route('product') }}">Semua Produk</a></li>
-                            </ul>
-                        </li>
-                
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Artikel <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="{{ route('article') }}">Semua Artikel</a></li>
+                              <li><a href="{{ route('article') }}">Artikel</a></li>
+                              <li><a href="{{ route('gallery') }}">Galeri</a></li>
                             </ul>
                         </li>
                 
                         <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Kontak</a></li>
 
-                        <li class="header-get-a-quote">
-                            {{-- <a class="btn btn-primary" href="contact.html">Kontak Kami</a> --}}
-                        </li>
+                        {{-- <li class="header-get-a-quote">
+                            <a class="btn btn-primary" href="contact.html">Hubungi Kami</a>
+                        </li> --}}
                       </ul>
                   </div>
                 </nav>

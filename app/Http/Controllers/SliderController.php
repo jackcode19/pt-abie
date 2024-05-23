@@ -87,7 +87,7 @@ class SliderController extends Controller
         try {
             if ($request->hasFile('slider_image')) {
                 $extension = $request->file('slider_image')->extension();
-                $imageName = time() . '.' . $extension;
+                $imageName = 'slider-' . time() . rand(1, 1000) . '.' . $extension;
                 $path = $request->file('slider_image')->storeAs('public/sliders', $imageName);
             }
 
@@ -122,7 +122,7 @@ class SliderController extends Controller
         if ($request->hasFile('slider_image')) {
             Storage::delete('public/sliders/'. $slider->slider_image);
             $extension = $request->file('slider_image')->extension();
-            $imageName = time() . '.' . $extension;
+            $imageName = 'slider-' . time() . rand(1, 1000) . '.' . $extension;
             $path = $request->file('slider_image')->storeAs('public/sliders', $imageName);
         } elseif($slider->slider_image) {
             $imageName = $slider->slider_image;
@@ -141,9 +141,9 @@ class SliderController extends Controller
             $sliderUpdate = $slider->update($inputUpdate);
 
             if ($sliderUpdate) {
-                return redirect()->route('slider.manage')->with('success', 'Berhasil mengupdate data slider');
+                return redirect()->route('slider.manage')->with('success', 'Berhasil mengubah data slider');
             }
-            return redirect()->back()->with('error', 'Gagal mengupdate data slider');
+            return redirect()->back()->with('error', 'Gagal mengubah data slider');
         } catch (\Exception $error) {
             return redirect()->back()->with('error', $error->getMessage());
         }

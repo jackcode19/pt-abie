@@ -14,7 +14,7 @@
                       class="fab fa-facebook-f"></i></a></li>
                 <li><a href="" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </li>
-                <li><a href="" aria-label="Instagram"><i
+                <li><a href="https://www.instagram.com/pt.abi_energi/" aria-label="Instagram"><i
                       class="fab fa-instagram"></i></a></li>
               </ul>
             </div><!-- Footer social end -->
@@ -57,15 +57,15 @@
     <div class="copyright">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-6">
-            <div class="copyright-info">
+          <div class="col-md-12">
+            <div class="copyright-info text-center">
               <span>Copyright &copy; <script>
                   document.write(new Date().getFullYear())
                 </script>, PT Anak Bungsu Indonesia Energi</span>
             </div>
           </div>
 
-          <div class="col-md-6">
+          {{-- <div class="col-md-6">
             <div class="footer-menu text-center text-md-right">
               <ul class="list-unstyled">
                 <li><a href="{{ route('about') }}">Tentang</a></li>
@@ -75,7 +75,7 @@
                 <li><a href="{{ route('contact') }}">Kontak</a></li>
               </ul>
             </div>
-          </div>
+          </div> --}}
         </div><!-- Row end -->
 
         <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">

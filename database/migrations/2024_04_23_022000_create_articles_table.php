@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('category_id')->unsigned()->nullable();
+            $table->id();
+            $table->unsignedBigInteger('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('category_articles')->onDelete('cascade');
             $table->string('title');
             $table->string('image');

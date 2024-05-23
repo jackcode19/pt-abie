@@ -34,7 +34,7 @@
                 <div class="col-md-12">
                     <div class="card card-seccond">
                         <div class="card-header">
-                            <h3 class="card-title">Data Company</h3>
+                            <h3 class="card-title">About Perusahaan</h3>
                         </div>
                         <form id="submitAbout" method="POST" action="{{ $actionUrl }}" enctype="multipart/form-data">
                             @if (@isset($about))
@@ -43,15 +43,6 @@
                             @endif
                             @csrf
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="name">Judul</label>
-                                    <input type="text" class="form-control" name="title" id="title" required
-                                        placeholder="Nama Perusahaan" value="{{ isset($about) ? $about->title : old('title') }}">
-
-                                    @error('title')
-                                        <div class="mt-2 text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
                                 <div class="form-group">
                                     <label for="image">Gambar Produk</label>
                                     @if (isset($about))
@@ -79,31 +70,31 @@
                                 </div>
                             
                                 <div class="form-group">
-                                    <label for="name">Deskripsi</label>
-                                    <textarea class="form-control" rows="4" name="description" id="summernote" required placeholder="Deskripsi ...">{{ isset($about) ? $about->description : old('description') }}</textarea>
-                                    @error('description')
+                                    <label for="name">Tentang Kami</label>
+                                    <textarea class="form-control" rows="4" name="aboutme" id="aboutme" required placeholder="Deskripsi ...">{{ isset($about) ? $about->aboutme : old('aboutme') }}</textarea>
+                                    @error('aboutme')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="name">Sub Deskripsi</label>
-                                    <textarea class="form-control" rows="3" name="sub_description" id="sub_description" placeholder="Sub Deskripsi ...">{{ isset($about) ? $about->sub_description : old('sub_description') }}</textarea>
-                                    @error('sub_description')
+                                    <label for="name">Visi Misi</label>
+                                    <textarea class="form-control" rows="3" name="visi_misi" id="visiMisi" placeholder="Sub Deskripsi ...">{{ isset($about) ? $about->visi_misi : old('visi_misi') }}</textarea>
+                                    @error('visi_misi')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Visi</label>
-                                    <textarea class="form-control" rows="3" name="visi" id="visi" required placeholder="Pengenalan ...">{{ isset($about) ? $about->visi : old('visi') }}</textarea>
-                                    @error('visi')
+                                    <label for="name">Nilai Kami</label>
+                                    <textarea class="form-control" rows="3" name="ourvalue" id="ourvalue" required placeholder="Pengenalan ...">{{ isset($about) ? $about->ourvalue : old('ourvalue') }}</textarea>
+                                    @error('ourvalue')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Misi</label>
-                                    <textarea class="form-control" rows="3" name="misi" id="misi" required placeholder="Pengenalan ...">{{ isset($about) ? $about->misi : old('misi') }}</textarea>
-                                    @error('misi')
+                                    <label for="name">Aktivitas Kami</label>
+                                    <textarea class="form-control" rows="3" name="ouractivity" id="ouractivity" required placeholder="Pengenalan ...">{{ isset($about) ? $about->ouractivity : old('ouractivity') }}</textarea>
+                                    @error('ouractivity')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -119,61 +110,34 @@
     </section>
     
 @endsection
-
-@if (isset($item))
-    @push('script')
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-        <script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('#dataItemImages').DataTable({
-
-                    language: {
-                        url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/id.json',
-                    },
-
-                    ajax: '{{ $object['url'] }}',
-
-                    processing: true,
-                    serverSide: true,
-                    ordering: true,
-                    searching: false,
-                    paging: true,
-                    autoWidth: true,
-                    scrollY: false,
-                    // lengthChange: false,
-                    info: true,
-
-                    columns: [
-                        @foreach ($object['columns_item_image'] as $column)
-                            {
-                                data: '{{ $column['name'] }}',
-                                name: '{{ $column['name'] }}'
-                            },
-                        @endforeach
-                    ],
-                    drawCallback: function() {
-                        // Delete Confirmation
-                        $(".delete-form").on("click", function() {
-                            var form = $(this).parent().find("form");
-                            Swal.fire({
-                                title: 'Are you sure?',
-                                text: "Apakah kamu yakin ingin menghapus item ini?",
-                                type: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Yes!'
-                            }).then((result) => {
-                                if (result.value) {
-                                    form.submit();
-                                }
-                            })
-                        });
-                    }
-                });
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            
+            $('#aboutme').summernote({
+            placeholder: 'Hello Bootstrap 5',
+            tabsize: 2,
+            height: 100
             });
-        </script>
-    @endpush
-@endif
+
+            $('#visiMisi').summernote({
+            placeholder: 'Visi Misi',
+            tabsize: 2,
+            height: 100
+            });
+
+            $('#ourvalue').summernote({
+            placeholder: 'Nilai Nilai Perusahaan',
+            tabsize: 2,
+            height: 100
+            });
+
+            $('#ouractivity').summernote({
+            placeholder: 'Aktivitas Kami',
+            tabsize: 2,
+            height: 100
+            });
+        });
+    </script>

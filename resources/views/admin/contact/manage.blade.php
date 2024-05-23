@@ -65,7 +65,7 @@
                                     <label for="logo">Logo</label>
                                     @if (isset($contact))
                                         <div class="mb-3">
-                                            <img src="{{ asset('/images/contact/' . $contact->logo) }}" alt=""
+                                            <img src="{{ Storage::url('contact/' . $contact->logo) }}" alt=""
                                                 style="width: 170px;" height="120px" class="img-rounded">
                                         </div>
                                     @endif
@@ -96,6 +96,13 @@
                                     <label for="name">Alamat</label>
                                     <textarea class="form-control" rows="3" name="address" id="address" required placeholder="Address ...">{{ isset($contact) ? $contact->address : old('address') }}</textarea>
                                     @error('description')
+                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Location</label>
+                                    <textarea class="form-control" rows="3" name="maps" id="maps" required placeholder="Location ...">{{ isset($contact) ? $contact->maps : old('maps') }}</textarea>
+                                    @error('maps')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

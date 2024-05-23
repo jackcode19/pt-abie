@@ -7,13 +7,6 @@
           <div class="col-lg-12">
               <div class="banner-heading">
                 <h1 class="banner-title">Produk</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                      <li class="breadcrumb-item"><a href="#">Home</a></li>
-                      <li class="breadcrumb-item"><a href="#">Produk</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">{{ $dataProduct->product_name }}</li>
-                    </ol>
-                </nav>
               </div>
           </div><!-- Col end -->
         </div><!-- Row end -->
@@ -25,7 +18,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-xl-12 col-lg-12">
+      <div class="col-xl-8 col-lg-12">
         <div class="content-inner-page">
 
           <h2 class="column-title mrt-0">{{ $dataProduct->product_name }}</h2>
@@ -47,9 +40,24 @@
         </div><!-- Content inner end -->
       </div><!-- Content Col end -->
 
+      <div class="col-xl-3 col-lg-4">
+        <div class="sidebar sidebar-left">
+          <div class="widget">
+            <h3 class="widget-title">Layanan Kami</h3>
+            <ul class="nav service-menu">
+              @foreach ($dataService as $service)
+                  <li><a href="service-single.html">{{ $service->title }}</a></li>
+              @endforeach
+            </ul>
+          </div><!-- Widget end -->
+
+        </div><!-- Sidebar end -->
+      </div><!-- Sidebar Col end -->
+
 
     </div><!-- Main row end -->
   </div><!-- Conatiner end -->
 </section><!-- Main container end -->
+
    
 @endsection

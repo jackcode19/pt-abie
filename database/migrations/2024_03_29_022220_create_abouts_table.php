@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->string('image');
-            $table->longText('description');
-            $table->longText('sub_description');
-            $table->longText('visi');
-            $table->longText('misi');
+            $table->longText('aboutme');
+            $table->longText('visi_misi');
+            $table->longText('ourvalue');
+            $table->longText('ouractivity');
             $table->timestamps();
         });
     }
