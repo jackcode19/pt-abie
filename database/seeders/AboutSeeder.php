@@ -25,8 +25,13 @@ sebagainya. Memiliki tim yang sudah berpengalaman sebagai Mobile Bunker Agen / A
 Insdutri Pertamina, kami berkomitmen dalam menjaga standar mutu produk dan
 pelayanan pelanggan.',
             'visi_misi' => '',
-            'ourvalue' => '',
-            'ouractivity' => ''
+            'ourvalue' => '
+Muda - Kolaborasi, keterbukaan, dan keinginan untuk belajar, yang memperkuat kreativitas dan inovasi.
+
+Energik - Energi yang tak terbatas, dan semangat untuk menaklukkan tantangan.
+
+Positif - kualitas, inovasi, keberagaman, integritas, pemberdayaan karyawan, keseimbangan kehidupan kerja dan pribadi, tanggung jawab sosial, transparansi, keadilan, ketahanan, kepuasan pelanggan, dan menciptakan dampak positif yang berkelanjutan dalam lingkungan.',
+            'ouractivity' => 'Kami bekerja sama dengan seluruh instansi dan sektor yang terkait di dalam Bidang Niaga Bahan Bakar Minya (BBM) dan bidang konstruksi baik menjadi pemasok barang swasta maupun pemerintah degan penuh tanggung jawab dan saling menguntungkan'
         ]);
     }
 }

@@ -46,7 +46,7 @@ class SliderController extends Controller
             'description',
             'created_at'
         ])
-        ->orderBy('title', 'asc');
+        ->orderBy('title', 'desc');
 
         return DataTables::of($slider)
 

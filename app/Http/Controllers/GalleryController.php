@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
+use Intervention\Image\Laravel\Facades\Image;
 
 class GalleryController extends Controller
 {
@@ -43,7 +44,7 @@ class GalleryController extends Controller
                 'cover_image',
                 'created_at'
             ])
-            ->orderBy('created_at', 'asc');
+            ->orderBy('created_at', 'desc');
 
             return DataTables::of($gallery)
 
@@ -97,7 +98,10 @@ class GalleryController extends Controller
                 foreach ($request->file('image') as $galleryImages) {   
                 $imageGallery = $input['title'] . '-gallery-image-' . time() . rand(1, 1000) . '.' . $galleryImages->extension();
                 $galleryImages->move(public_path() . '/storage/gallery/gallery_image/', $imageGallery);
-                // $path = $galleryImages->storeAs('public', 'gallery', 'gallery_image', $imageGallery);
+                // $path = public_path('/storage/gallery/gallery_image/'. $imageGallery);
+
+                // Image::read($galleryImages)->resize(1000, 1000)->save($path);
+
 
                     GalleryImage::create([
                         'gallery_id' => $createGalley->gallery_id,
@@ -202,6 +206,21 @@ class GalleryController extends Controller
             
             $updateGallery = $gallery->update($inputUpdate);
 
+            if ($request->hasFile('image')) {
+                foreach ($request->file('image') as $galleryImages) {   
+                $imageGallery = $gallery['title'] . '-gallery-image-' . time() . rand(1, 1000) . '.' . $galleryImages->extension();
+                $path = public_path('/storage/gallery/gallery_image/'. $imageGallery);
+
+                Image::read($galleryImages)->resize(1000, 1000)->save($path);
+
+                    GalleryImage::create([
+                        'gallery_id' => $gallery->gallery_id,
+                        'image' => $imageGallery,
+                    ]);
+                }
+            }
+
+
             if ($updateGallery) {
                 return redirect()->route('gallery.manage')->with('success', 'Berhasil mengubah data gallery');
             }
@@ -218,6 +237,7 @@ class GalleryController extends Controller
         try {
             $gallery = Gallery::findOrFaiL($id);
             Storage::delete('public/gallery/covers/' . $gallery->cover_image);
+            $gallery->gallery_images()->delete();
 
             $galleryDelete = $gallery->delete();
 
@@ -246,7 +266,9 @@ class GalleryController extends Controller
             File::delete($path);
             $extension = $request->file('image');
             $imageName = '-gallery-image-' . time() . rand(1, 1000) . '.' . $extension->extension();
-            $extension->move(public_path() . '/storage/gallery/gallery_image/', $imageName);
+            // $extension->move(public_path() . '/storage/gallery/gallery_image/', $imageName);
+            $path = public_path('/storage/gallery/gallery_image/'. $imageName);
+            Image::read($extension)->resize(1000, 1000)->save($path);
         }
             elseif ($galleryImage->image) {
                 $imageName = $galleryImage->image;
@@ -281,7 +303,7 @@ class GalleryController extends Controller
         File::delete($path);
 
         if ($delete) {
-            return redirect()->route('gallery.edit')->with('success', 'Berhasil menghapus galeri image');
+            return redirect()->route('gallery.manage')->with('success', 'Berhasil menghapus galeri image');
         }
         return redirect()->back()->with('error', 'Gagal menghapus gallery image');
 

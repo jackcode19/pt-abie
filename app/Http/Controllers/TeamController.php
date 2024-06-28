@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class TeamController extends Controller
@@ -20,11 +21,11 @@ class TeamController extends Controller
                 ],
                 [
                     'label' => 'Image',
-                    'name' => 'team_image',
+                    'name' => 'image',
                 ],
                 [
-                    'label' => 'Jabatan',
-                    'name' => 'position'
+                    'label' => 'Deskripsi',
+                    'name' => 'description'
                 ],
                 [
                     'label' => 'Aksi',
@@ -42,8 +43,8 @@ class TeamController extends Controller
             $team = Team::select([
             'id',
             'name',
-            'position',
-            'team_image',
+            'image',
+            'description',
             'created_at'
         ])
         ->orderBy('name', 'asc');
@@ -58,8 +59,8 @@ class TeamController extends Controller
                     return date('d-m-Y H:i:s', strtotime($team->updated_at));
                 })
 
-            ->addColumn('team_image', function ($team) {
-                    $url = asset('/images/teams/' . $team->team_image);
+            ->addColumn('image', function ($team) {
+                    $url = Storage::url('articles/'. $team->image);
                     return '<img src="' . $url . '" alt="" style="width: 170px;" height="120px" class="img-rounded" />';
                 })
 
@@ -72,7 +73,7 @@ class TeamController extends Controller
 
                 return $string;
             })
-            ->rawColumns(['action', 'team_image'])
+            ->rawColumns(['action', 'image'])
             ->make(true);
         } catch (\Exception $error) {
             return $error->getMessage();

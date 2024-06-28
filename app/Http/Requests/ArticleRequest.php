@@ -22,7 +22,7 @@ class ArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => 'required',
+            // 'category_id' => 'required',
             'title' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:png,jpg,jpeg,gift,svg',
             'content' => 'required',
@@ -32,7 +32,7 @@ class ArticleRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'category_id.required' => 'Kategori artikel harus diisi.',
+            // 'category_id.required' => 'Kategori artikel harus diisi.',
             'title.required' => 'Judul artikel tidak boleh kosong.',
             'title.string' => 'Nama produk harus berupa string.',
             'title.max' => 'Nama produk maksimal 255 karakter.',

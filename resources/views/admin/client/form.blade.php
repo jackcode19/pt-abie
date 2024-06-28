@@ -77,8 +77,20 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Deskripsi</label>
-                                    <textarea class="form-control" rows="3" name="description" id="description" placeholder="Deskripsi ..." required>{{ isset($client) ? $client->description : old('description') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="description" id="description" placeholder="Deskripsi ...">{{ isset($client) ? $client->description : old('description') }}</textarea>
                                     @error('description')
+                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>Province</label>
+                                    <select class="form-control" name="provinces_id" id="provinces_id" style="width: 100%;">
+                                        <option value="">Pilih Provinsi</option>
+                                    @foreach($provinceList as $province)
+                                    <option {{ isset($client) && $client->provinces_id == $province->provinces_id ? 'selected' : '' }} value="{{ $province->provinces_id }}">{{ $province->name }}</option>
+                                    @endforeach
+                                    </select>
+                                    @error('provinces_id')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

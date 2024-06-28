@@ -21,8 +21,9 @@ class HomeController extends Controller
         $dataService = Service::get();
         $dataClient = Client::get();
         $dataProduct = Product::get();
-        $dataArticle = Article::get();
+        $dataArticle = Article::orderBy('created_at', 'desc')->get();
+        $dataAbout = About::first();
         $slider = Slider::get();
-        return view('frontend.home', compact('homeContent', 'dataService', 'dataClient', 'dataProduct', 'dataArticle', 'slider'));
+        return view('frontend.home', compact('homeContent', 'dataService', 'dataClient', 'dataProduct', 'dataArticle', 'slider', 'dataAbout'));
     }
 }

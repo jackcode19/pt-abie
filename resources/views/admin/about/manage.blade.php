@@ -47,8 +47,6 @@
                                     <label for="image">Gambar Produk</label>
                                     @if (isset($about))
                                         <div class="mb-3">
-                                            {{-- <img src="{{ asset('/images/about/' . $about->image) }}" alt=""
-                                                style="width: 170px;" height="120px" class="img-rounded"> --}}
                                                 <img src="{{ Storage::url('abouts/'. $about->image) }}" alt=""
                                                 style="width: 170px;" height="120px" class="img-rounded">
                                         </div>
@@ -71,7 +69,7 @@
                             
                                 <div class="form-group">
                                     <label for="name">Tentang Kami</label>
-                                    <textarea class="form-control" rows="4" name="aboutme" id="aboutme" required placeholder="Deskripsi ...">{{ isset($about) ? $about->aboutme : old('aboutme') }}</textarea>
+                                    <textarea class="form-control" rows="4" name="aboutme" id="aboutme" placeholder="Deskripsi ...">{{ isset($about) ? $about->aboutme : old('aboutme') }}</textarea>
                                     @error('aboutme')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
@@ -86,14 +84,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Nilai Kami</label>
-                                    <textarea class="form-control" rows="3" name="ourvalue" id="ourvalue" required placeholder="Pengenalan ...">{{ isset($about) ? $about->ourvalue : old('ourvalue') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="ourvalue" id="ourvalue" placeholder="Pengenalan ...">{{ isset($about) ? $about->ourvalue : old('ourvalue') }}</textarea>
                                     @error('ourvalue')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Aktivitas Kami</label>
-                                    <textarea class="form-control" rows="3" name="ouractivity" id="ouractivity" required placeholder="Pengenalan ...">{{ isset($about) ? $about->ouractivity : old('ouractivity') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="ouractivity" id="ouractivity" placeholder="Pengenalan ...">{{ isset($about) ? $about->ouractivity : old('ouractivity') }}</textarea>
                                     @error('ouractivity')
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
@@ -117,21 +115,21 @@
         $(document).ready(function() {
             
             $('#aboutme').summernote({
-            placeholder: 'Hello Bootstrap 5',
+            placeholder: 'Tentang Kami',
             tabsize: 2,
-            height: 100
+            height: 150
             });
 
             $('#visiMisi').summernote({
             placeholder: 'Visi Misi',
             tabsize: 2,
-            height: 100
+            height: 500
             });
 
             $('#ourvalue').summernote({
             placeholder: 'Nilai Nilai Perusahaan',
             tabsize: 2,
-            height: 100
+            height: 150
             });
 
             $('#ouractivity').summernote({

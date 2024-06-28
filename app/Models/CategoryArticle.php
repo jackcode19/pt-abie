@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CategoryArticle extends Model
 {
-    use HasFactory;
+     use HasFactory;
 
     protected $table = 'category_articles';
 
@@ -20,8 +20,13 @@ class CategoryArticle extends Model
         'name',
     ];
 
-    public function articles()
+    // public function articles()
+    // {
+    //     return $this->belongsToMany(Article::class);
+    // }
+
+     public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->belongsToMany('App\Models\Article');
     }
 }

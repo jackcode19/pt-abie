@@ -20,5 +20,6 @@ class Client extends Model
         'title',
         'client_logo',
         'description',
+        'provinces_id'
     ];
 }

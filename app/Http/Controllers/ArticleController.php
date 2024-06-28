@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+use App\Models\CategoriesArticle;
+use App\Models\Category;
 use App\Models\CategoryArticle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
@@ -49,7 +52,7 @@ class ArticleController extends Controller
                 'image',
                 'content',
             ])
-            ->orderBy('created_at', 'asc');
+            ->orderBy('created_at', 'desc');
 
             return DataTables::of($article)
 
@@ -100,7 +103,6 @@ class ArticleController extends Controller
             }
 
             $input['image'] = $imageName;
-            
             $createArtikel = Article::create($input);
 
             if ($createArtikel) {
@@ -108,7 +110,8 @@ class ArticleController extends Controller
             }
             return redirect()->back()->with('error', 'Gagal menambahkan artikel baru');
         } catch (\Exception $error) {
-            return redirect()->back()->with('error', $error->getMessage());
+            // return redirect()->back()->with('error', $error->getMessage());
+            return $error->getMessage();
         }
     }
 

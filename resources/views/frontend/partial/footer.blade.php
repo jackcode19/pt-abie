@@ -1,89 +1,73 @@
-<footer id="footer" class="footer bg-overlay">
-    <div class="footer-main">
-      <div class="container">
-        <div class="row justify-content-between">
-          <div class="col-lg-4 col-md-6 footer-widget footer-about">
-            <h3 class="widget-title">Tentang Kami</h3>
-            {{-- <img loading="lazy" width="200px" class="footer-logo" src="/frontend/images/footer-bg.png" alt="Constra"> --}}
-              <p>
-                Menjadi salah satu Perusahaan Agen Pertamina yang kompeten dalam menjual dan mendisri busikan Bahan Bakar MInyak (BBM) Industri, terdepan akan kualitas dan kuantitas dalam setiap produk dan pelayanannya.
-              </p>
-            <div class="footer-social">
-              <ul>
-                <li><a href="" aria-label="Facebook"><i
-                      class="fab fa-facebook-f"></i></a></li>
-                <li><a href="" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li><a href="https://www.instagram.com/pt.abi_energi/" aria-label="Instagram"><i
-                      class="fab fa-instagram"></i></a></li>
-              </ul>
-            </div><!-- Footer social end -->
-          </div><!-- Col end -->
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
-            <h3 class="widget-title">Informasi</h3>
-            <p>
-                Samolo Blok 4 No.3 Ciherang<br>
-                Kecamatan Karangtengah <br>
-                Kabupaten Cianjur - Jawa Barat 43281<br><br>
-                <strong>Phone:</strong> 081254267654<br>
-                <strong>Email:</strong> ptabienergi@gmail.com<br>
-              </p>
-          </div><!-- Col end -->
-
-          {{-- <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
-            <h3 class="widget-title">Working Hours</h3>
-            <div class="working-hours">
-              We work 7 days a week, every day excluding major holidays. Contact us if you have an emergency, with our
-              Hotline and Contact form.
-              <br><br> Monday - Friday: <span class="text-right">10:00 - 16:00 </span>
-              <br> Saturday: <span class="text-right">12:00 - 15:00</span>
-              <br> Sunday and holidays: <span class="text-right">09:00 - 12:00</span>
+<footer class="site-footer style-1" id="footer">
+		
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 aos-item" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" style="">
+        <div class="footer-bg" style="background-image: url(/frontend/images/image1.jpeg);"></div> 
+        @isset($banner)
+         <div class="footer-bg" style=" background-image: url('{{ Storage::url('banners/'. $banner->image) }}');"></div> 
+        @endisset
+      </div>
+      <div class="col-lg-7">
+        <div class="footer-top">
+          <div class="row">
+            <div class="col-md-12 aos-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+              <div class="footer-logo logo-light">
+                <a href="{{ route('home') }}"><img src="/frontend/images/logo-white.png" alt="Footer Logo"></a>
+              </div>
+            </div>	
+            <div class="col-md-5 col-sm-6 aos-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+              <div class="widget widget_services">
+                <h4 class="footer-title">Menu</h4>
+                <ul>
+                  <li><a href="{{ route('home') }}">Beranda</a></li>
+                  <li><a href="{{ route('about') }}">Tentang Kami</a></li>
+                  <li><a href="{{ route('service') }}">Layanan</a></li>
+                  <li><a href="{{ route('product') }}">Produk</a></li>
+                  <li><a href="{{ route('article') }}">Blog</a></li>
+                  <li><a href="{{ route('contact') }}">Kontak Kami</a></li>
+                  {{-- <li><a href="team.html">Team</a></li> --}}
+                </ul>
+              </div>
             </div>
-          </div><!-- Col end --> --}}
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
-            <h3 class="widget-title">Layanan</h3>
-            <ul class="list-arrow">
-              <li><a href="service-single.html">Perdagangan BBM</a></li>
-              <li><a href="service-single.html">Perdagangan Material Bangunan</a></li>
-              <li><a href="service-single.html">Perdagangan Logam Material</a></li>
-            </ul>
-          </div><!-- Col end -->
-        </div><!-- Row end -->
-      </div><!-- Container end -->
-    </div><!-- Footer main end -->
-
-    <div class="copyright">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-12">
-            <div class="copyright-info text-center">
-              <span>Copyright &copy; <script>
-                  document.write(new Date().getFullYear())
-                </script>, PT Anak Bungsu Indonesia Energi</span>
+            <div class="col-md-7 col-sm-6 aos-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+              <div class="widget widget_about">
+                <h4 class="footer-title">Tentang Kami</h4>
+                @if ($about)
+                  <p>{!! Str::limit($about->about_us_summary, 200, ' ...') !!}</p>
+                @else
+                  <p>Tidak ada data yang ditampilkan!</p>
+                @endif
+                
+                <ul class="social-list style-1">
+                  <li><a href="https://www.facebook.com/profile.php?id=61560719464729" target="_blank" ><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="https://www.instagram.com/abi_energi/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                  <li><a href="https://x.com/abi_energi" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="https://www.youtube.com/channel/UCvFbhAwTurU7BCo_pCEfZAw" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                  <li><a href="https://www.tiktok.com/@abi_energi" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+                  <li><a href="https://www.linkedin.com/in/pt-anak-bungsu-indonesia-40b09b308/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+              </div>
             </div>
           </div>
-
-          {{-- <div class="col-md-6">
-            <div class="footer-menu text-center text-md-right">
-              <ul class="list-unstyled">
-                <li><a href="{{ route('about') }}">Tentang</a></li>
-                <li><a href="{{ route('service') }}">Layanan</a></li>
-                <li><a href="{{ route('product') }}">Produk</a></li>
-                <li><a href="{{ route('article') }}">Artikel</a></li>
-                <li><a href="{{ route('contact') }}">Kontak</a></li>
-              </ul>
-            </div>
-          </div> --}}
-        </div><!-- Row end -->
-
-        <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
-          <button class="btn btn-primary" title="Back to Top">
-            <i class="fa fa-angle-double-up"></i>
-          </button>
         </div>
-
-      </div><!-- Container end -->
-    </div><!-- Copyright end -->
+      </div>
+    </div>
+  </div>
+  <!-- footer bottom part -->
+  <div class="footer-bottom">
+      <div class="container">
+          <div class="row align-items-center">
+    <div class="col-md-6 text-center text-md-start"> 
+      <span class="copyright-text">© 2024 <a href="javascript:void0;" class="text-primary">Abie</a> All rights reserved.</span>
+    </div>
+    <div class="col-md-6 text-center text-md-end"> 
+      {{-- <ul class="footer-link d-inline-block">
+        <li><a href="javascript:void(0);">Privacy Policy</a></li>
+        <li><a href="javascript:void(0);">Team & Condition</a></li>
+      </ul> --}}
+    </div>
+          </div>
+      </div>
+  </div>
 </footer>

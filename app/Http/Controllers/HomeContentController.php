@@ -10,7 +10,6 @@ class HomeContentController extends Controller
      public function index()
     {
         $homeContent = HomeContent::first();
-
         return view('admin.home.manage', compact('homeContent'));
     }
 
@@ -35,13 +34,11 @@ class HomeContentController extends Controller
     }
 
     public function update(Request $request, HomeContent $homeContent)
-    {
-        // Validasi input jika diperlukan
-        
+    {   
         $homeContent->update($request->all());
         
         return redirect()->route('home.index')
-            ->with('success', 'Home content updated successfully.');
+            ->with('success', 'Konten Halaman Home berhasil ditambahkan');
     }
 
     public function destroy(HomeContent $homeContent)
@@ -49,6 +46,6 @@ class HomeContentController extends Controller
         $homeContent->delete();
         
         return redirect()->route('home.index')
-            ->with('success', 'Home content deleted successfully.');
+            ->with('success', 'Konten Halaman Home berhasil dihapus');
     }
 }

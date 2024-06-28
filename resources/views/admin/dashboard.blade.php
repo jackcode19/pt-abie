@@ -28,7 +28,7 @@
                 <!-- small box -->
                 <div class="small-box bg-secondary">
                     <div class="inner">
-                        {{-- <h4>{{ $order }}</h4> --}}
+                        <h4>{{ $service }}</h4>
 
                         <p>Data Service</p>
                     </div>
@@ -41,12 +41,12 @@
                 <!-- small box -->
                 <div class="small-box bg-primary">
                     <div class="inner">
-                        {{-- <h4>{{ $paid }}</h4> --}}
+                        <h4>{{ $product }}</h4>
 
-                        <p>Data Event</p>
+                        <p>Data Produk</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="ion ion-stats-bars"></i>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        {{-- <h4>{{ $user }}</h4> --}}
+                        <h4>{{ $client }}</h4>
 
                         <p>Total Client</p>
                     </div>

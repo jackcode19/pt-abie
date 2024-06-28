@@ -20,10 +20,16 @@ class Article extends Model
         'category_id',
         'image',
         'content',
+        'source',
     ];
 
-    public function category()
+    // public function categories()
+    // {
+    //     return $this->belongsToMany(CategoryArticle::class);
+    // }
+
+     public function categories()
     {
-        return $this->belongsTo(CategoryArticle::class, 'category_id', 'id');
+        return $this->belongsToMany('App\Models\CategoryArticle');
     }
 }

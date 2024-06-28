@@ -37,22 +37,57 @@
                 <li class="nav-header">Master Data</li>
                 <li class="nav-item">
                     <a href="{{ route('home.index') }}"
-                        class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        class="nav-link {{ request()->is('/*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-file"></i>
                         <p>
-                            Home Content
+                            Home Page
                         </p>
                     </a>
                 </li>
                 {{-- <li class="nav-item">
-                    <a href="/about/manage" class="nav-link {{ request()->is('about/manage') ? 'active' : '' }}">
+                    <a href="{{ route('career.manage') }}"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Career
+                        </p>
+                    </a>
+                </li> --}}
+                {{-- <li class="nav-item">
+                    <a href="{{ route('team.manage') }}"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Team
+                        </p>
+                    </a>
+                </li> --}}
+                {{-- <li class="nav-item">
+                    <a href="{{ route('testimonial.manage') }}"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Tetsimonial
+                        </p>
+                    </a>
+                </li> --}}
+                <li class="nav-item">
+                    <a href="{{ route('about.manage') }}" class="nav-link {{ request()->is('about/manage') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             About
                         </p>
                     </a>
-                </li> --}}
+                </li>
                 <li class="nav-item">
+                    <a href="{{ route('contact.manage') }}" class="nav-link {{ request()->is('contact/manage') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-phone"></i>
+                        <p>
+                            Contact
+                        </p>
+                    </a>
+                </li>
+                {{-- <li class="nav-item">
                     <a href="{{ route('slider.manage') }}" class="nav-link {{ request()->is('slider/*') ? 'active' : '' }}">
                         <i class="nav-icon far fa-image"></i>
                         <p>
@@ -60,7 +95,15 @@
                             <span class="badge badge-info right"></span>
                         </p>
                     </a>
-                </li>
+                </li> --}}
+                {{-- <li class="nav-item">
+                    <a href="{{ route('banner.manage') }}" class="nav-link {{ request()->is('banner/*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-columns"></i>
+                        <p>
+                            Banner
+                        </p>
+                    </a>
+                </li> --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-book"></i>
@@ -70,49 +113,71 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('about.manage') }}" class="nav-link {{ request()->is('about/*') ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>About</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('service.manage') }}" class="nav-link {{ request()->is('service/*') ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Service</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('product.manage') }}" class="nav-link {{ request()->is('product/*') ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Product</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('article.manage') }}" class="nav-link {{ request()->is('article/*') ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Article</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('gallery.manage') }}" class="nav-link {{ request()->is('gallery/*') ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Gallery</p>
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="{{ route('client.manage') }}" class="nav-link {{ request()->is('client/*') ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Client</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('contact.manage') }}" class="nav-link {{ request()->is('contact/*') ? 'active' : '' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Contacts</p>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('slider.manage') }}" class="nav-link {{ request()->is('slider/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Slider</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('service.manage') }}" class="nav-link {{ request()->is('service/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Service</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('product.manage') }}" class="nav-link {{ request()->is('product/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('article.manage') }}" class="nav-link {{ request()->is('article/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Article</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('gallery.manage') }}" class="nav-link {{ request()->is('gallery/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Gallery</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('client.manage') }}" class="nav-link {{ request()->is('client/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Client</p>
+                            </a>
+                        </li>
+                         {{-- <li class="nav-item">
+                            <a href="{{ route('career.manage') }}" class="nav-link {{ request()->is('career/*') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Career</p>
+                            </a>
+                        </li> --}}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-chart-pie"></i>
+                    <p>
+                        Category
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('category-article.manage') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Category Article</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('category.manage') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Category Produk</p>
+                            </a>
+                        </li> --}}
                     </ul>
                 </li>
                 {{-- <li class="nav-item">
@@ -159,29 +224,7 @@
                         </p>
                     </a>
                 </li> --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-chart-pie"></i>
-                    <p>
-                        Category
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('category-article.manage') }}" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Category Article</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/charts/flot.html" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Category Produk</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
+                
                 {{-- <li class="nav-item">
                     <a href="{{ route('contact.manage') }}" class="nav-link {{ request()->is('gallery/*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-phone"></i>

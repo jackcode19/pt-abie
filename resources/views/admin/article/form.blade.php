@@ -35,7 +35,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Tambah Artkel</h3>
                         </div>
-                        <form id="submitProduct" method="POST" action="{{ $actionUrl }}" enctype="multipart/form-data">
+                        <form id="submitArticle" method="POST" action="{{ $actionUrl }}" enctype="multipart/form-data">
                             @if (@isset($article))
                                 {{ method_field('PUT') }}
                                 <input type="hidden" name="user_id" value="{{ $article->id }}" />
@@ -93,9 +93,18 @@
                                         <div class="mt-2 text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="name">Sumber</label>
+                                    <input type="text" class="form-control" name="source" id="source"
+                                        placeholder="Sumber Artikel" value="{{ isset($article) ? $article->source : old('source') }}">
+
+                                    @error('source')
+                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" submitProduct="submit" class="btn btn-info btn-sm">Submit</button>
+                                <button type="submit" submitArticle="submit" class="btn btn-info btn-sm">Submit</button>
                             </div>
                         </form>
                     </div>

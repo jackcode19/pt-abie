@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('client_logo');
+            $table->char('provinces_id', 36);
             $table->timestamps();
         });
     }

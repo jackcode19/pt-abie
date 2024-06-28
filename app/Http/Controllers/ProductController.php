@@ -57,7 +57,7 @@ class ProductController extends Controller
             ])
             // ->join('category_products', 'category_products.id', '=', 'products.category_id')
             // ->leftJoin('category_products as category', 'category.id', 'products.category_id')
-            ->orderBy('product_name', 'asc');
+            ->orderBy('product_name', 'desc');
 
             return DataTables::of($product)
 

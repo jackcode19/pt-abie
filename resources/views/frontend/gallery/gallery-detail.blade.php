@@ -1,21 +1,41 @@
 @extends('frontend.layouts.layout')
 @section('main')
-<div id="banner-area" class="banner-area" style="background-image:url(/frontend/images/banner/banner1.jpg)">
-  <div class="banner-text">
-    <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-              <div class="banner-heading">
-                <h1 class="banner-title">Galeri</h1>
-              </div>
-          </div><!-- Col end -->
-        </div><!-- Row end -->
-    </div><!-- Container end -->
-  </div><!-- Banner text end -->
-</div><!-- Banner area end --> 
+<!-- Banner  -->
+<div class="slidearea bannerside">
+	{{-- <div class="side-contact-info">
+		<ul>
+			<li><i class="fas fa-envelope"></i> info@example.com</li>
+		</ul>
+	</div> --}}
+	<div class="ic-bnr-inr ic-bnr-inr-sm style-1 overlay-black-light overlay-left" style="background-image: url(/frontend/images/banner/image1.png);">
+    @isset($banner)
+    <div class="ic-bnr-inr ic-bnr-inr-sm style-1 overlay-black-light overlay-left"  style="background-image: url('{{ Storage::url('banners/'. $banner->image) }}');">
+    @endisset
+		<div class="container-fluid">
+			<div class="ic-bnr-inr-entry">
+				<h1>Galeri</h1>
+				<!-- Breadcrumb Row -->
+				<nav aria-label="breadcrumb" class="breadcrumb-row">
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
+						<li class="breadcrumb-item"><a href="{{ route('gallery') }}">Galeri</a></li>
+					</ul>
+				</nav>
+				<!-- Breadcrumb Row End -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Banner End -->
 
-<section id="main-container" class="main-container pb-2">
+
+<section class="content-inner pb-2">
   <div class="container">
+
+    <div class="section-head style-1 text-center">
+      <h6 class="sub-title text-primary">Galeri</h6>
+      <h2 class="title m-b50">{{ $galleryName->title }}</h2>
+    </div>
       <!-- Gallery -->
       <div class="row">
         @foreach ($galleryDetail as $galleryImage)

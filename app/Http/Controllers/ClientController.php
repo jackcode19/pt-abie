@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -24,8 +25,8 @@ class ClientController extends Controller
                     'name' => 'client_logo'
                 ],
                 [
-                    'label' => 'Deskripsi',
-                    'name' => 'description'
+                    'label' => 'Provinsi',
+                    'name' => 'provinsi'
                 ],
                 [
                     'label' => 'Action',
@@ -40,13 +41,15 @@ class ClientController extends Controller
     {
         try {
             $client = Client::select([
-                'id',
+                '   id',
                 'title',
                 'client_logo',
                 'description',
-                'created_at',
+                'clients.created_at',
+                'provinces.name as provinsi',
             ])
-            ->orderBy('created_at', 'asc');
+            ->join('provinces', 'clients.provinces_id', 'provinces.provinces_id')
+            ->orderBy('created_at', 'desc');
             return DataTables::of($client)
 
             ->addColumn('created_at', function ($client) {
@@ -77,7 +80,8 @@ class ClientController extends Controller
 
     public function create()
     {
-        return view('admin.client.form');
+        $dataProvince['provinceList'] = Province::get();
+        return view('admin.client.form', $dataProvince);
     }
 
     public function store(Request $request)
@@ -108,7 +112,8 @@ class ClientController extends Controller
     {
         try {
             $data['client'] = Client::findOrFail($id);
-            return view('admin.client.form', $data);
+            $dataProvince['provinceList'] = Province::get();
+            return view('admin.client.form', $data, $dataProvince);
         } catch (\Exception $error) {
             return redirect()->back()->with('error', $error->getMessage());
         }

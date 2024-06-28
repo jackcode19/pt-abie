@@ -46,7 +46,7 @@ class ServiceController extends Controller
                 'description',
                 'created_at'
             ])
-            ->orderBy('created_at');
+            ->orderBy('created_at', 'desc');
             return DataTables::of($service)
 
             ->addColumn('created_at', function ($service) {

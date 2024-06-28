@@ -100,6 +100,9 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 
     <script src="/admin/dist/js/pages/dashboard.js"></script>
+
+    
+
     @include('components.alert')
     @include('components.custom')
     @stack('script')
@@ -136,7 +139,7 @@
         // $("#summernote").summernote();
 
        $('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
+        placeholder: 'Isi Konten',
         tabsize: 2,
         height: 120,
         toolbar: [
