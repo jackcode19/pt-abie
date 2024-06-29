@@ -64,7 +64,7 @@ Route::get('/gallery/{id}/detail', [MediaController::class, 'galleryDetail'])->n
 
 Route::group(['middleware' => ['auth:web']], function () {
 
-    Route::get('logout',  [\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
+    // Route::get('logout',  [\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
