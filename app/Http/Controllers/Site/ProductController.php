@@ -12,7 +12,7 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class ProductController extends Controller
 {
-    public function product()
+    public function index()
     {
         return "ok";
         // $dataProduct = Product::get();
