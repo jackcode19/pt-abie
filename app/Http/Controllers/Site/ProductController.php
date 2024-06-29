@@ -14,13 +14,16 @@ class ProductController extends Controller
 {
     public function product()
     {
-        try{
-            $dataProduct = Product::get();
-            $banner = Banner::where('page', 'product')->first();
-            return view('frontend.product.product', compact('dataProduct', 'banner'));
-        }catch(Exception $error) { 
-            return $error;
-        }
+        return "ok";
+        // $dataProduct = Product::get();
+        // $banner = Banner::where('page', 'product')->first();
+        // return view('frontend.product.product', compact('dataProduct', 'banner'));
+
+        // try{
+            
+        // }catch(Exception $error) { 
+        //     return $error;
+        // }
     }
 
     public function productDetail($id)
