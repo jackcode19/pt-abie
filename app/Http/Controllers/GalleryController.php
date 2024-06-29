@@ -15,7 +15,7 @@ class GalleryController extends Controller
     public function manage()
     {
         $gallery['table'] = [
-            'table_url' => route('gallery.data'),
+            'table_url' => '/gallery/data',
             'columns' => [
                 [
                     'label' => 'Judul',

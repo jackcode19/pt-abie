@@ -19,7 +19,7 @@ class ArticleController extends Controller
     public function manage()
     {
         $article['table'] = [
-            'table_url' => route('article.data'),
+            'table_url' => '/article/data',
             'columns' => [
                 [
                     'label' => 'Judul Artikel',

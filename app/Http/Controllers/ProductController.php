@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function manage()
     {
         $product['table'] = [
-            'table_url' => route('product.data'),
+            'table_url' => '/product/data',
             'columns' => [
                 [
                     'label' => 'Produk',

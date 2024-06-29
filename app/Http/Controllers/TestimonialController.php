@@ -12,7 +12,7 @@ class TestimonialController extends Controller
     public function manage()
     {
         $testimonial['table'] = [
-            'table_url' => route('testimonial.data'),
+            'table_url' => '/testimonial/data',
             'columns' => [
                 [
                     'label' => 'Klien',

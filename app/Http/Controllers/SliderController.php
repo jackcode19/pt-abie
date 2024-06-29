@@ -13,7 +13,7 @@ class SliderController extends Controller
     public function manage()
     {
         $slider['table'] = [
-            'table_url' => route('slider.data'),
+            'table_url' => '/slider/data',
             'columns' => [
                 [
                     'label' => 'Judul',

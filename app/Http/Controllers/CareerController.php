@@ -13,7 +13,7 @@ class CareerController extends Controller
     public function manage()
     {
         $career['table'] = [
-            'table_url' => route('career.data'),
+            'table_url' => '/career/data',
             'columns' => [
                 [
                     'label' =>  'Judul',

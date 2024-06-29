@@ -11,7 +11,7 @@ class CategoryProductController extends Controller
     public function manage()
     {
         $category['table'] = [
-            'table_url' => route('category.data'),
+            'table_url' => '/category-article/data',
             'columns' => [
                 [
                     'label' => 'Product',

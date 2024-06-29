@@ -13,7 +13,7 @@ class TeamController extends Controller
     public function manage()
     {
         $team['table'] = [
-            'table_url' => route('team.data'),
+            'table_url' => '/team/data',
             'columns' => [
                 [
                     'label' => 'Nama',

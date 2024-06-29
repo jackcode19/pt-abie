@@ -14,7 +14,7 @@ class ClientController extends Controller
     public function manage()
     {
         $client['table'] = [
-            'table_url' => route('client.data'),
+            'table_url' => '/client/data',
             'columns' => [
                 [
                     'label' => 'Nama Klien',

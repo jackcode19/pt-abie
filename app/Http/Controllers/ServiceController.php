@@ -13,7 +13,7 @@ class ServiceController extends Controller
     public function manage()
     {
         $service['table'] = [
-            'table_url' => route('service.data'),
+            'table_url' => '/service/data',
             'columns' => [
                 [
                     'label' => 'Judul Service',

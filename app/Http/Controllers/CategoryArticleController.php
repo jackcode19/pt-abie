@@ -12,7 +12,7 @@ class CategoryArticleController extends Controller
     public function manage()
     {
          $category['table'] = [
-                'table_url' => route('category-article.data'),
+                'table_url' => '/category/data',
                 'columns' => [
                     [
                         'label' => 'Nama Kategori',

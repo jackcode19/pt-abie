@@ -12,7 +12,7 @@ class BannerController extends Controller
     public function manage()
     {
         $banner['table'] = [
-            'table_url' => route('banner.data'),
+            'table_url' => '/banner/data',
             'columns' => [
                 [
                     'label' => 'Title',
