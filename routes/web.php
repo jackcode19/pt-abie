@@ -52,7 +52,7 @@ Route::get('/about/nilai-nilai', [SiteAboutController::class, 'ourValue'])->name
 Route::get('/about/aktivitas-kami', [SiteAboutController::class, 'activity'])->name('activity');
 
 Route::get('/service', [SiteServiceController::class, 'service'])->name('service');
-Route::get('/product', [SiteProductController::class, 'product'])->name('product');
+Route::get('/products', [SiteProductController::class, 'product'])->name('product');
 
 Route::get('/product/{id}/detail', [SiteProductController::class, 'productDetail'])->name('productDetail');
 Route::get('/article', [MediaController::class, 'article'])->name('article');
