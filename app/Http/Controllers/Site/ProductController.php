@@ -19,7 +19,7 @@ class ProductController extends Controller
             $banner = Banner::where('page', 'product')->first();
             return view('frontend.product.product', compact('dataProduct', 'banner'));
         }catch(Exception $error) { 
-            return $error->getMessage();
+            return $error;
         }
     }
 
