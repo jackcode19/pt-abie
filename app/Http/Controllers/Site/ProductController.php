@@ -12,18 +12,12 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function product()
     {
-        return "ok";
-        // $dataProduct = Product::get();
-        // $banner = Banner::where('page', 'product')->first();
-        // return view('frontend.product.product', compact('dataProduct', 'banner'));
+        $dataProduct = Product::get();
+        $banner = Banner::where('page', 'product')->first();
+        return view('frontend.product.product', compact('dataProduct', 'banner'));
 
-        // try{
-            
-        // }catch(Exception $error) { 
-        //     return $error;
-        // }
     }
 
     public function productDetail($id)
