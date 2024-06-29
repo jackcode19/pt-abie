@@ -41,7 +41,7 @@ class ClientController extends Controller
     {
         try {
             $client = Client::select([
-                '   id',
+                'id',
                 'title',
                 'client_logo',
                 'description',

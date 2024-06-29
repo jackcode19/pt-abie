@@ -71,7 +71,7 @@
                 ajax: '{{ $table['table_url'] }}',
                 ordering: false,
                 searching: true,
-                paging: false,
+                paging: true,
                 autoWidth: true,
                 scrollY: false,
                 info: false,
