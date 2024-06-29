@@ -61,10 +61,10 @@ Route::get('/contact', [SiteContactController::class, 'contact'])->name('contact
 Route::get('/gallery', [MediaController::class, 'gallery'])->name('gallery');
 Route::get('/gallery/{id}/detail', [MediaController::class, 'galleryDetail'])->name('galleryDetail');
 
-Route::get('logout',  [\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
+
 Route::group(['middleware' => ['auth:web']], function () {
 
-    
+    Route::get('logout',  [\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
